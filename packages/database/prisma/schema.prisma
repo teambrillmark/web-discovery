@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Query {
+  id          String   @id @default(cuid())
+  raw         String
+  intent      String
+  industry    String?
+  entityType  String?
+  location    String?
+  keywords    String   // JSON array stored as string
+  objective   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  crawlLogs   CrawlLog[]
+  entities    QueryEntity[]
+
+  @@map("queries")
+}
+
+model Entity {
+  id              String   @id @default(cuid())
+  name            String
+  domain          String   @unique
+  description     String?
+  services        String?  // JSON array
+  founders        String?  // JSON array
+  linkedin        String?
+  twitter         String?
+  technologies    String?  // JSON array
+  locations       String?  // JSON array
+  emails          String?  // JSON array
+  phones          String?  // JSON array
+  category        String?
+  entityType      String   @default("company") // company, product, local_business
+  confidenceScore Float    @default(0)
+  relevanceScore  Float    @default(0)
+  isValid         Boolean  @default(true)
+  source          String?
+  rawHtml         String?
+  metaTitle       String?
+  metaDescription String?
+  positioning     String?  // AI-generated one-sentence competitive context
+  competitorTier  String?  // direct | partial | broader — AI-classified vs query company
+  firstSeen       DateTime @default(now())
+  lastSeen        DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  queries         QueryEntity[]
+  snapshots       Snapshot[]
+  changes         Change[]
+  validations     Validation[]
+
+  @@map("entities")
+}
+
+model QueryEntity {
+  id       String  @id @default(cuid())
+  queryId  String
+  entityId String
+  rank     Int?
+  score    Float?
+  isNew    Boolean @default(true) // false when domain was already known from a previous run
+
+  query  Query  @relation(fields: [queryId], references: [id])
+  entity Entity @relation(fields: [entityId], references: [id])
+
+  @@unique([queryId, entityId])
+  @@map("query_entities")
+}
+
+model Snapshot {
+  id        String   @id @default(cuid())
+  entityId  String
+  data      String   // Full JSON snapshot of entity at this time
+  hash      String   // MD5 hash of data for quick comparison
+  createdAt DateTime @default(now())
+
+  entity  Entity   @relation(fields: [entityId], references: [id])
+  changes Change[]
+
+  @@map("snapshots")
+}
+
+model Change {
+  id          String   @id @default(cuid())
+  entityId    String
+  snapshotId  String
+  field       String
+  oldValue    String?
+  newValue    String?
+  changeType  String   // added, removed, modified
+  detectedAt  DateTime @default(now())
+
+  entity   Entity   @relation(fields: [entityId], references: [id])
+  snapshot Snapshot @relation(fields: [snapshotId], references: [id])
+
+  @@map("changes")
+}
+
+model Validation {
+  id              String   @id @default(cuid())
+  entityId        String
+  validationType  String
+  passed          Boolean
+  score           Float
+  reason          String?
+  createdAt       DateTime @default(now())
+
+  entity Entity @relation(fields: [entityId], references: [id])
+
+  @@map("validations")
+}
+
+model CrawlLog {
+  id          String   @id @default(cuid())
+  queryId     String?
+  url         String
+  status      String   // pending, crawling, success, failed, skipped
+  statusCode  Int?
+  error       String?
+  duration    Int?     // milliseconds
+  entitiesFound Int   @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  query Query? @relation(fields: [queryId], references: [id])
+
+  @@map("crawl_logs")
+}

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020", "DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "../..",
+    "paths": {
+      "@discovery/shared": ["packages/shared/src/index.ts"],
+      "@discovery/database": ["packages/database/src/index.ts"],
+      "@discovery/crawler": ["packages/crawler/src/index.ts"],
+      "@discovery/extraction": ["packages/extraction/src/index.ts"],
+      "@discovery/validation": ["packages/validation/src/index.ts"],
+      "@discovery/ranking": ["packages/ranking/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
