@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Competitor {
+  id               String           @id @default(uuid())
+  normalizedDomain String           @unique
+  rawInput         String
+  status           CompetitorStatus @default(DISCOVERED)
+  discoverySource  String
+  discoveredAt     DateTime         @default(now())
+  lastDiscoveredAt DateTime         @default(now())
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  discoveries      Discovery[]
+
+  @@index([normalizedDomain])
+  @@index([status])
+  @@map("competitors")
+}
+
+model Discovery {
+  id              String     @id @default(uuid())
+  competitorId    String
+  queryId         String
+  source          String
+  discoveryMethod String
+  originalValue   String
+  discoveredAt    DateTime
+  createdAt       DateTime   @default(now())
+
+  competitor      Competitor @relation(fields: [competitorId], references: [id], onDelete: Cascade)
+
+  @@index([competitorId])
+  @@index([queryId])
+  @@index([source])
+  @@map("discoveries")
+}
+
+enum CompetitorStatus {
+  DISCOVERED
+  VALIDATED_PASS
+  VALIDATED_FAIL
+}

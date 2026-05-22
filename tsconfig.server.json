@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noUncheckedIndexedAccess": true,
+    "jsx": undefined,
+    "incremental": false,
+    "plugins": []
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/app/**", "src/components/**", "**/*.test.ts", "node_modules", "dist"]
+}
