@@ -7,7 +7,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@discovery/shared": "*",
+    "@discovery/shared": "workspace:*",
     "playwright": "^1.41.0"
   },
   "devDependencies": {

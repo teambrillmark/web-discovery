@@ -7,19 +7,20 @@
     "apps/*",
     "packages/*"
   ],
+  "packageManager": "pnpm@11.2.2",
   "scripts": {
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
-    "dev:api": "npm run dev --workspace=apps/api",
-    "dev:web": "npm run dev --workspace=apps/web",
-    "build": "npm run build --workspaces --if-present",
+    "dev": "concurrently \"pnpm --filter @discovery/api dev\" \"pnpm --filter @discovery/web dev\"",
+    "dev:api": "pnpm --filter @discovery/api dev",
+    "dev:web": "pnpm --filter @discovery/web dev",
+    "build": "pnpm -r build --if-present",
     "db:generate": "prisma generate --schema=packages/database/prisma/schema.prisma",
     "db:push": "prisma db push --schema=packages/database/prisma/schema.prisma",
     "db:studio": "prisma studio --schema=packages/database/prisma/schema.prisma",
     "db:seed": "ts-node -r tsconfig-paths/register packages/database/src/seed.ts",
-    "crawl": "npm run crawl --workspace=apps/api",
-    "demo": "npm run demo --workspace=apps/api",
-    "install:playwright": "npx playwright install chromium",
-    "setup": "npm install && npm run db:push && npm run db:seed && npm run install:playwright"
+    "crawl": "pnpm --filter @discovery/api crawl",
+    "demo": "pnpm --filter @discovery/api demo",
+    "install:playwright": "pnpm exec playwright install chromium",
+    "setup": "pnpm install && pnpm run db:push && pnpm run db:seed && pnpm run install:playwright"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
