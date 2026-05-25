@@ -50,8 +50,15 @@ function makeAnalyzerMock() {
   return {
     analyze: vi.fn().mockResolvedValue({
       companyType: 'SaaS',
+      category: 'Platform',
       industry: 'Project Management',
       niche: 'Team collaboration',
+      primaryCompetitiveIdentity: 'Project Management SaaS',
+      primarySpecialties: ['Task tracking', 'Kanban boards'],
+      secondaryCapabilities: [],
+      coreServices: ['Task tracking', 'Kanban', 'Reporting'],
+      competitiveSurfaces: ['Team project management tools'],
+      competitorSearchQueries: ['best project management software', 'top team collaboration tools'],
       services: ['Task tracking', 'Kanban'],
       targetAudience: ['Development teams'],
       positioningSummary: 'Project management SaaS for teams.',

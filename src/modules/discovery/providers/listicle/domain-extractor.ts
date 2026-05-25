@@ -13,7 +13,8 @@
 //   3. Apply blocklist + canonical normalization as final gates.
 
 import * as cheerio from 'cheerio';
-import type { Cheerio, AnyNode } from 'cheerio';
+import type { Cheerio } from 'cheerio';
+import type { AnyNode } from 'domhandler';
 import { normalizeDomain } from '../../../../shared/domain';
 import { isBlockedDomain } from './filters';
 
@@ -88,6 +89,7 @@ export function extractDomainsFromHtml(html: string, sourceUrl: string): string[
 
     seen.add(outcome.domain);
     domains.push(outcome.domain);
+    return;
   });
 
   return domains;

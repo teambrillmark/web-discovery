@@ -7,8 +7,15 @@ import type { QueryEngineOutput } from '@/modules/query-engine/types';
 
 interface BusinessContext {
   companyType: string;
+  category: string;
   industry: string;
   niche: string;
+  primaryCompetitiveIdentity: string;
+  primarySpecialties: string[];
+  secondaryCapabilities: string[];
+  coreServices: string[];
+  competitiveSurfaces: string[];
+  competitorSearchQueries: string[];
   services: string[];
   targetAudience: string[];
   positioningSummary: string;
@@ -39,7 +46,57 @@ interface DeduplicationStats {
   duplicateCount: number;
 }
 
+interface QualificationStats {
+  totalInput: number;
+  accepted: number;
+  rejected: number;
+  rejectedByRules: number;
+  rejectedByAI: number;
+  rejectionReasons: Record<string, number>;
+}
+
+interface MatchedSignals {
+  businessTypeMatch: boolean;
+  industryMatch: boolean;
+  specialtyOverlap: number;
+  audienceOverlap: number;
+  serviceOverlap: number;
+  identitySimilarity: number;
+}
+
+interface CompetitorProfileSummary {
+  companyType: string | null;
+  industry: string | null;
+  niche: string | null;
+  primaryCompetitiveIdentity: string | null;
+  primarySpecialties: string[];
+  targetAudience: string[];
+  aiConfidence: 'high' | 'medium' | 'low';
+}
+
+interface RankedCompetitor {
+  domain: string;
+  source: string;
+  discoveryMethod: string;
+  discoveredAt: string;
+  queryId: string;
+  relevanceScore: number;
+  scoreConfidence: 'high' | 'medium' | 'low';
+  matchedSignals: MatchedSignals;
+  scoringReasoning: string[];
+  profile: CompetitorProfileSummary;
+}
+
+interface ProfilingStats {
+  totalInput: number;
+  highRelevance: number;
+  mediumRelevance: number;
+  lowRelevance: number;
+  averageScore: number;
+}
+
 interface DiscoveryOutput {
+  rankedCompetitors: RankedCompetitor[];
   competitors: DiscoveredCompetitor[];
   newCompetitors: ProcessedCompetitor[];
   existingCompetitors: ProcessedCompetitor[];
@@ -47,6 +104,8 @@ interface DiscoveryOutput {
   queryId: string;
   providersActive: string[];
   deduplicationStats: DeduplicationStats;
+  qualificationStats?: QualificationStats;
+  profilingStats?: ProfilingStats;
 }
 
 // ── Component state ───────────────────────────────────────────────────────────
@@ -161,6 +220,165 @@ function StatChip({ label, value, color }: { label: string; value: number; color
   );
 }
 
+// ── Score badge with bar ──────────────────────────────────────────────────────
+
+function ScoreBadge({ score, confidence }: { score: number; confidence: string }) {
+  const color = confidence === 'high' ? '#15803d'
+    : confidence === 'medium' ? '#b45309'
+    : '#6b7280';
+  const bg = confidence === 'high' ? '#f0fdf4'
+    : confidence === 'medium' ? '#fffbeb'
+    : '#f4f4f5';
+  const border = confidence === 'high' ? '#86efac'
+    : confidence === 'medium' ? '#fcd34d'
+    : '#d4d4d8';
+  const barColor = score >= 70 ? '#22c55e' : score >= 40 ? '#f59e0b' : '#d1d5db';
+  return (
+    <div style={{
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      padding: '4px 10px', borderRadius: 6,
+      border: `1px solid ${border}`, background: bg, minWidth: 58,
+    }}>
+      <span style={{ fontSize: 17, fontWeight: 700, color, fontFamily: 'monospace', lineHeight: 1.2 }}>{score}</span>
+      {/* Score bar */}
+      <div style={{ width: '100%', height: 3, background: '#e5e7eb', borderRadius: 2, margin: '2px 0 1px' }}>
+        <div style={{ height: '100%', width: `${score}%`, background: barColor, borderRadius: 2, transition: 'width 0.3s ease' }} />
+      </div>
+      <span style={{ fontSize: 9, fontWeight: 600, color, textTransform: 'uppercase', letterSpacing: 0.3 }}>{confidence}</span>
+    </div>
+  );
+}
+
+// Profile completeness 0–1 — used for the completeness badge
+function profileCompletenessRatio(profile: CompetitorProfileSummary): number {
+  let filled = 0;
+  if (profile.companyType) filled += 1;
+  if (profile.industry) filled += 1;
+  if (profile.niche) filled += 1;
+  if (profile.primaryCompetitiveIdentity) filled += 2;
+  if (profile.primarySpecialties.length >= 2) filled += 2;
+  if (profile.targetAudience.length >= 1) filled += 1;
+  return filled / 8;
+}
+
+// ── Ranked competitor card ────────────────────────────────────────────────────
+
+function RankedCompetitorCard({ rank, competitor, isNew }: {
+  rank: number;
+  competitor: RankedCompetitor;
+  isNew: boolean;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const { profile, matchedSignals, scoringReasoning } = competitor;
+  const completeness = profileCompletenessRatio(profile);
+
+  return (
+    <div style={{
+      border: '1px solid #e5e7eb', borderRadius: 8,
+      background: '#fff', overflow: 'hidden',
+    }}>
+      {/* Header row */}
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: 10,
+        padding: '10px 14px', cursor: 'pointer',
+      }} onClick={() => setExpanded((v) => !v)}>
+        <span style={{
+          fontSize: 11, fontWeight: 700, color: '#9ca3af',
+          minWidth: 20, textAlign: 'right',
+        }}>#{rank}</span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <span style={{ fontFamily: 'monospace', fontWeight: 600, fontSize: 14, color: '#111' }}>
+            {competitor.domain}
+          </span>
+          {profile.niche && (
+            <div style={{ fontSize: 11, color: '#6b7280', marginTop: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {profile.niche}
+            </div>
+          )}
+        </div>
+        {isNew && <span style={badgeStyle('green')}>NEW</span>}
+        {profile.companyType && <span style={badgeStyle('gray')}>{profile.companyType}</span>}
+        <ScoreBadge score={competitor.relevanceScore} confidence={competitor.scoreConfidence} />
+        <span style={{ fontSize: 14, color: '#9ca3af', marginLeft: 4 }}>{expanded ? '▾' : '▸'}</span>
+      </div>
+
+      {/* Expanded detail */}
+      {expanded && (
+        <div style={{ borderTop: '1px solid #f3f4f6', padding: '10px 14px 12px', background: '#fafafa' }}>
+          {/* Profile summary */}
+          {profile.primaryCompetitiveIdentity && (
+            <div style={{ fontSize: 12, color: '#7e22ce', fontWeight: 600, marginBottom: 6 }}>
+              {profile.primaryCompetitiveIdentity}
+            </div>
+          )}
+          {profile.primarySpecialties.length > 0 && (
+            <div style={{ marginBottom: 8 }}>
+              {profile.primarySpecialties.map((s) => (
+                <span key={s} style={{ ...badgeStyle('purple'), fontSize: 10 }}>{s}</span>
+              ))}
+            </div>
+          )}
+
+          {/* Match signals — only show non-zero signals */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginBottom: 8 }}>
+            {matchedSignals.specialtyOverlap > 0 && (
+              <span style={{
+                ...badgeStyle(matchedSignals.specialtyOverlap >= 0.5 ? 'teal' : 'gray'),
+                fontSize: 10,
+              }}>
+                specialty {Math.round(matchedSignals.specialtyOverlap * 100)}%
+              </span>
+            )}
+            {matchedSignals.identitySimilarity > 0 && (
+              <span style={{
+                ...badgeStyle(matchedSignals.identitySimilarity >= 0.4 ? 'teal' : 'gray'),
+                fontSize: 10,
+              }}>
+                identity {Math.round(matchedSignals.identitySimilarity * 100)}%
+              </span>
+            )}
+            {matchedSignals.audienceOverlap > 0 && (
+              <span style={{ ...badgeStyle('blue'), fontSize: 10 }}>
+                audience {Math.round(matchedSignals.audienceOverlap * 100)}%
+              </span>
+            )}
+            {matchedSignals.businessTypeMatch && (
+              <span style={{ ...badgeStyle('green'), fontSize: 10 }}>type ✓</span>
+            )}
+            {matchedSignals.industryMatch && (
+              <span style={{ ...badgeStyle('green'), fontSize: 10 }}>industry ✓</span>
+            )}
+          </div>
+
+          {/* Reasoning */}
+          {scoringReasoning.length > 0 && (
+            <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: 8, marginBottom: 6 }}>
+              {scoringReasoning.map((r, i) => (
+                <div key={i} style={{ fontSize: 11, color: '#444', marginBottom: 3, display: 'flex', gap: 6, alignItems: 'flex-start' }}>
+                  <span style={{ color: '#6ee7b7', fontWeight: 700, flexShrink: 0, marginTop: 1 }}>›</span>
+                  <span>{r}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Source + profile quality metadata */}
+          <div style={{ marginTop: 4, display: 'flex', gap: 4, flexWrap: 'wrap', alignItems: 'center' }}>
+            <span style={badgeStyle('gray')}>{competitor.source}</span>
+            <span style={badgeStyle('purple')}>{competitor.discoveryMethod}</span>
+            <span style={{
+              ...badgeStyle(completeness >= 0.75 ? 'green' : completeness >= 0.5 ? 'orange' : 'gray'),
+              fontSize: 10,
+            }}>
+              profile {Math.round(completeness * 100)}%
+            </span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Competitor row ────────────────────────────────────────────────────────────
 
 function CompetitorRow({
@@ -199,7 +417,9 @@ function DiscoveryResults({
 }) {
   const [showAll, setShowAll] = useState(false);
 
-  const { newCompetitors, existingCompetitors, deduplicationStats, providersActive } = data;
+  const { newCompetitors, existingCompetitors, deduplicationStats, providersActive,
+          qualificationStats, profilingStats, rankedCompetitors } = data;
+  const [showRejected, setShowRejected] = useState(false);
 
   const newDomains    = new Set(newCompetitors.map((c) => c.normalizedDomain));
   const existingDomains = new Set(existingCompetitors.map((c) => c.normalizedDomain));
@@ -214,6 +434,13 @@ function DiscoveryResults({
   const hasNewThisRun = deduplicationStats.newCount > 0;
   const hasAnyKnown = allKnown.length > 0;
 
+  // Top rejection reasons for display (max 4)
+  const topRejectionReasons = qualificationStats
+    ? Object.entries(qualificationStats.rejectionReasons)
+        .sort(([, a], [, b]) => b - a)
+        .slice(0, 4)
+    : [];
+
   return (
     <div>
       {/* Stat chips */}
@@ -222,11 +449,110 @@ function DiscoveryResults({
         <span>{providersActive.map((p) => <span key={p} style={badgeStyle('blue')}>{p}</span>)}</span>,
       )}
 
+      {/* Qualification stats — shown when qualification ran */}
+      {qualificationStats && qualificationStats.totalInput > 0 && (
+        <div style={{
+          margin: '12px 0', padding: '12px 14px', borderRadius: 8,
+          border: '1px solid #e0e7ff', background: '#f5f3ff',
+        }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: '#4f46e5', marginBottom: 8 }}>
+            QUALIFICATION FILTER
+          </div>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+            <StatChip label="RETRIEVED"  value={qualificationStats.totalInput}    color="gray" />
+            <StatChip label="QUALIFIED"  value={qualificationStats.accepted}      color="green" />
+            <StatChip label="REJECTED"   value={qualificationStats.rejected}      color="orange" />
+          </div>
+          {qualificationStats.rejected > 0 && (
+            <div>
+              <div style={{ fontSize: 12, color: '#6d28d9', marginBottom: 4 }}>
+                {qualificationStats.rejectedByRules} by rules · {qualificationStats.rejectedByAI} by AI
+              </div>
+              {topRejectionReasons.length > 0 && (
+                <div>
+                  <button
+                    onClick={() => setShowRejected((v) => !v)}
+                    style={{
+                      background: 'none', border: 'none', cursor: 'pointer',
+                      fontSize: 11, fontWeight: 600, color: '#7c3aed', padding: '2px 0',
+                      display: 'flex', alignItems: 'center', gap: 4,
+                    }}
+                  >
+                    <span>{showRejected ? '▾' : '▸'}</span>
+                    <span>Top rejection reasons</span>
+                  </button>
+                  {showRejected && (
+                    <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                      {topRejectionReasons.map(([reason, count]) => (
+                        <span key={reason} style={{ ...badgeStyle('orange'), fontSize: 10 }}>
+                          {reason} ×{count}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
       <div style={{ display: 'flex', gap: 10, margin: '14px 0 16px' }}>
         <StatChip label="NEW"      value={deduplicationStats.newCount}      color="green" />
         <StatChip label="EXISTING" value={deduplicationStats.existingCount} color="blue" />
         <StatChip label="TOTAL DB" value={allKnown.length}                  color="gray" />
       </div>
+
+      {/* Ranked competitors — profiling + scoring output */}
+      {rankedCompetitors && rankedCompetitors.length > 0 && (
+        <div style={{ marginBottom: 18 }}>
+          {/* Profiling stats header */}
+          {profilingStats && (() => {
+            const topScore = rankedCompetitors[0]?.relevanceScore ?? 0;
+            const bottomScore = rankedCompetitors[rankedCompetitors.length - 1]?.relevanceScore ?? 0;
+            return (
+              <div style={{
+                margin: '0 0 10px', padding: '10px 14px', borderRadius: 8,
+                border: '1px solid #d1fae5', background: '#ecfdf5',
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#065f46' }}>RELEVANCE RANKING</span>
+                  <span style={{ fontSize: 11, color: '#059669', fontFamily: 'monospace' }}>
+                    {bottomScore}–{topScore} / 100
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
+                  <StatChip label="HIGH"   value={profilingStats.highRelevance}   color="green" />
+                  <StatChip label="MEDIUM" value={profilingStats.mediumRelevance} color="orange" />
+                  <StatChip label="LOW"    value={profilingStats.lowRelevance}    color="gray" />
+                </div>
+                <div style={{ height: 4, background: '#d1fae5', borderRadius: 2, marginBottom: 6 }}>
+                  <div style={{
+                    height: '100%', borderRadius: 2,
+                    width: `${profilingStats.averageScore}%`,
+                    background: profilingStats.averageScore >= 60 ? '#16a34a' : profilingStats.averageScore >= 35 ? '#d97706' : '#9ca3af',
+                    transition: 'width 0.4s ease',
+                  }} />
+                </div>
+                <div style={{ fontSize: 11, color: '#047857' }}>
+                  avg {profilingStats.averageScore}/100 · {rankedCompetitors.length} competitor{rankedCompetitors.length !== 1 ? 's' : ''} ranked
+                </div>
+              </div>
+            );
+          })()}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {rankedCompetitors.map((c, i) => (
+              <RankedCompetitorCard
+                key={c.domain}
+                rank={i + 1}
+                competitor={c}
+                isNew={newDomains.has(c.domain)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* This run: newly discovered */}
       {newCompetitors.length > 0 && (
@@ -339,6 +665,8 @@ export function CompetitorDiscoveryWidget() {
     setPipeline((prev) => ({ ...prev, [step]: { ...prev[step], ...patch } }));
   }
 
+  const isButtonDisabled = running || !query.trim();
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const trimmed = query.trim();
@@ -430,7 +758,14 @@ export function CompetitorDiscoveryWidget() {
           placeholder="e.g. https://www.brillmark.com"
           disabled={running}
         />
-        <button style={buttonStyle} type="submit" disabled={running || !query.trim()}>
+        <button
+          style={{
+            ...buttonStyle,
+            ...(isButtonDisabled ? { background: '#94a3b8', cursor: 'not-allowed', opacity: 0.85 } : {}),
+          }}
+          type="submit"
+          disabled={isButtonDisabled}
+        >
           {running ? 'Analyzing…' : 'Analyze'}
         </button>
       </form>
@@ -468,9 +803,9 @@ export function CompetitorDiscoveryWidget() {
               <StatusBadge status={contextExtractor.status} />
             </div>
             <p style={stepDescStyle}>
-              Crawls the target website, extracts visible content, then uses Groq AI to identify
-              the company&apos;s industry, niche, and services. This context is fed into competitor
-              discovery to prevent hallucinated results.
+              Crawls the target website and uses Groq AI to extract the company&apos;s primary
+              competitive identity — what it most directly competes on, not just every service listed.
+              Discovery providers are anchored to this identity to prevent topic drift.
             </p>
             {contextExtractor.status === 'error' && (
               <div style={{ color: '#b45309', fontSize: 13 }}>
@@ -478,20 +813,36 @@ export function CompetitorDiscoveryWidget() {
               </div>
             )}
             {contextExtractor.status === 'running' && (
-              <div style={{ fontSize: 13, color: '#555' }}>Crawling website and analyzing content…</div>
+              <div style={{ fontSize: 13, color: '#555' }}>Crawling website and extracting competitive identity…</div>
             )}
             {contextExtractor.data && (() => {
               const ctx = contextExtractor.data;
+              const hasIdentity = ctx.primaryCompetitiveIdentity && ctx.primaryCompetitiveIdentity !== 'Unknown';
               return (
                 <div>
-                  {fieldRow('Company type', ctx.companyType)}
+                  {/* Competitive identity — the most important new fields */}
+                  {hasIdentity && fieldRow(
+                    'Competitive identity',
+                    <span style={{ fontWeight: 600, color: '#7e22ce', fontFamily: 'system-ui' }}>
+                      {ctx.primaryCompetitiveIdentity}
+                    </span>,
+                  )}
+                  {ctx.primarySpecialties.length > 0 && fieldRow(
+                    'Primary specialties',
+                    <span>{ctx.primarySpecialties.map((s) => <span key={s} style={badgeStyle('purple')}>{s}</span>)}</span>,
+                  )}
+                  {ctx.secondaryCapabilities.length > 0 && fieldRow(
+                    'Secondary capabilities',
+                    <span>{ctx.secondaryCapabilities.map((s) => <span key={s} style={badgeStyle('gray')}>{s}</span>)}</span>,
+                  )}
+                  {ctx.competitorSearchQueries.length > 0 && fieldRow(
+                    'Discovery queries',
+                    <span>{ctx.competitorSearchQueries.map((q) => <span key={q} style={badgeStyle('teal')}>{q}</span>)}</span>,
+                  )}
+                  <div style={{ borderTop: '1px solid #e5e7eb', margin: '10px 0 8px' }} />
                   {fieldRow('Industry',     ctx.industry)}
                   {fieldRow('Niche',        ctx.niche)}
                   {fieldRow('Confidence',   <span style={badgeStyle(confidenceBadgeColor(ctx.confidence))}>{ctx.confidence}</span>)}
-                  {ctx.services.length > 0 && fieldRow(
-                    'Services',
-                    <span>{ctx.services.map((s) => <span key={s} style={badgeStyle('teal')}>{s}</span>)}</span>,
-                  )}
                   {ctx.targetAudience.length > 0 && fieldRow(
                     'Target audience',
                     <span>{ctx.targetAudience.map((a) => <span key={a} style={badgeStyle('blue')}>{a}</span>)}</span>,
@@ -511,9 +862,9 @@ export function CompetitorDiscoveryWidget() {
               <StatusBadge status={discovery.status} />
             </div>
             <p style={stepDescStyle}>
-              Runs all active providers in parallel (AI + web search). Results are normalized,
-              validated, and classified as new or existing by the deduplication engine.
-              Known competitors are shown below with their discovery history.
+              Runs all active providers in parallel (AI + web search). Results are filtered by
+              the qualification layer, then each competitor profile is extracted and scored for
+              relevance against the target. Competitors are ranked 0–100 by similarity.
             </p>
             {discovery.error && <div style={{ color: '#dc2626', fontSize: 13 }}>{discovery.error}</div>}
             {discovery.status === 'running' && (

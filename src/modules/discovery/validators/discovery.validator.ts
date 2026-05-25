@@ -2,8 +2,16 @@ import { z } from 'zod';
 
 const BusinessContextSchema = z.object({
   companyType: z.string(),
+  category: z.string().default('Unknown'),
   industry: z.string(),
   niche: z.string(),
+  // Competitive intelligence fields (optional for backward compat with older callers)
+  primaryCompetitiveIdentity: z.string().default('Unknown'),
+  primarySpecialties: z.array(z.string()).default([]),
+  secondaryCapabilities: z.array(z.string()).default([]),
+  coreServices: z.array(z.string()).default([]),
+  competitiveSurfaces: z.array(z.string()).default([]),
+  competitorSearchQueries: z.array(z.string()).default([]),
   services: z.array(z.string()),
   targetAudience: z.array(z.string()),
   positioningSummary: z.string(),

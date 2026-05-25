@@ -21,8 +21,17 @@ export interface ExtractedContent {
 export interface BusinessContext {
   domain: string;
   companyType: string;
+  category: string;
   industry: string;
   niche: string;
+  // Competitive intelligence layer — separates primary identity from supporting services
+  primaryCompetitiveIdentity: string;
+  primarySpecialties: string[];
+  secondaryCapabilities: string[];
+  coreServices: string[];
+  competitiveSurfaces: string[];
+  competitorSearchQueries: string[];
+  // Flat service list retained for backward compatibility
   services: string[];
   targetAudience: string[];
   positioningSummary: string;

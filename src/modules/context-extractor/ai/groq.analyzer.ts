@@ -58,6 +58,7 @@ export class GroqAnalyzer {
         baseDelayMs: this.retryDelayMs,
         logger: this.logger,
         context: 'groq-context-analysis',
+        shouldRetry: isRetriableGroqError,
       });
     } catch (error) {
       throw new ContextAnalysisError(
@@ -75,7 +76,9 @@ export class GroqAnalyzer {
       model: this.model,
       response_format: { type: 'json_object' },
       temperature: 0.2,
-      max_tokens: 1024,
+      // Increased from 1024: competitive intent schema is richer (competitorSearchQueries,
+      // primarySpecialties, competitiveSurfaces all add tokens to the response).
+      max_tokens: 2048,
     });
 
     const content = completion.choices[0]?.message?.content;
@@ -106,7 +109,15 @@ export class GroqAnalyzer {
     }
 
     this.logger.info(
-      { ...logCtx, confidence: result.data.confidence, industry: result.data.industry },
+      {
+        ...logCtx,
+        confidence: result.data.confidence,
+        industry: result.data.industry,
+        primaryCompetitiveIdentity: result.data.primaryCompetitiveIdentity,
+        primarySpecialties: result.data.primarySpecialties,
+        competitorSearchQueries: result.data.competitorSearchQueries,
+        queriesGeneratedFrom: 'primaryCompetitiveIdentity + primarySpecialties + competitiveSurfaces',
+      },
       'GroqAnalyzer: analysis complete',
     );
     return result.data;
@@ -115,8 +126,15 @@ export class GroqAnalyzer {
   private lowConfidenceFallback(): ValidatedAIBusinessContext {
     return {
       companyType: 'Unknown',
+      category: 'Unknown',
       industry: 'Unknown',
       niche: 'Unknown',
+      primaryCompetitiveIdentity: 'Unknown',
+      primarySpecialties: [],
+      secondaryCapabilities: [],
+      coreServices: [],
+      competitiveSurfaces: [],
+      competitorSearchQueries: [],
       services: [],
       targetAudience: [],
       positioningSummary: '',
@@ -124,4 +142,12 @@ export class GroqAnalyzer {
       confidence: 'low',
     };
   }
+}
+
+// Daily quota (TPD) errors won't recover on retry — bail immediately.
+// Per-minute (TPM) errors may recover after a short delay — allow retries.
+function isRetriableGroqError(error: Error): boolean {
+  const msg = error.message;
+  if (!msg.includes('429')) return true;
+  return !msg.includes('tokens per day') && !msg.includes('TPD');
 }

@@ -1,46 +1,67 @@
-// Translates BusinessContext into listicle-style search queries.
+// WHY two-tier query generation?
 //
-// WHY listicle queries specifically?
-// Searches like "best CRO agencies" surface article pages ("Top 10 CRO Companies 2024")
-// that already contain curated competitor lists with working website links.
-// These pages do the competitor research for us — we just extract the domains.
+// Tier 1 — AI-generated queries (preferred):
+//   The context extractor's LLM already analyzed the company and generated
+//   competitorSearchQueries specifically for this company's primary competitive identity.
+//   Example for Brillmark: ["top experimentation agencies", "best A/B testing agencies for ecommerce", ...]
+//   These are contextual, intent-driven, and specific to the company — use them directly.
 //
-// Data flow: BusinessContext -> string[] queries -> page-extractor -> domain-extractor
+// Tier 2 — Template fallback (only when tier 1 is unavailable):
+//   If competitorSearchQueries is empty (low-confidence extraction, context unavailable,
+//   or pre-enrichment caller), fall back to the template system derived from industry/niche/services.
+//   This preserves the old behavior as a safety net without regressing callers that don't
+//   yet pass enriched context.
+//
+// Data flow: BusinessContext → competitorSearchQueries (if present) → page-extractor
+//                           OR → template system → page-extractor
 
 import type { BusinessContext } from '../../types';
 
 const CURRENT_YEAR = new Date().getFullYear().toString();
-const MAX_QUERIES = 4;
+const MAX_QUERIES = 6;
 
-// Each template returns a query string from the context, or null if the
-// required field is missing/empty. Null slots are skipped at build time.
+// Template fallback — only fires when AI-generated queries are absent.
+// Kept intentionally simple: the AI path is the primary investment.
 type QueryTemplate = (ctx: BusinessContext) => string | null;
 
-const TEMPLATES: QueryTemplate[] = [
-  // Primary: industry-level query (most specific, highest signal)
-  (ctx) => (ctx.industry ? `best ${ctx.industry} agencies` : null),
-
-  // Secondary: niche-level query — only emit if it adds new information
-  (ctx) => (ctx.niche && ctx.niche.toLowerCase() !== ctx.industry.toLowerCase() ? `top ${ctx.niche} companies` : null),
-
-  // Tertiary: service-specific with year for recency
-  (ctx) => (ctx.services.length > 0 ? `best ${ctx.services[0]} agencies ${CURRENT_YEAR}` : null),
-
-  // Quaternary: industry list with year to target recent roundup posts
-  (ctx) => (ctx.industry ? `${ctx.industry} agency list ${CURRENT_YEAR}` : null),
+const FALLBACK_TEMPLATES: QueryTemplate[] = [
+  (ctx) => (ctx.primaryCompetitiveIdentity && ctx.primaryCompetitiveIdentity !== 'Unknown'
+    ? `top ${ctx.primaryCompetitiveIdentity.toLowerCase()} companies`
+    : null),
+  (ctx) => (ctx.primarySpecialties[0]
+    ? `best ${ctx.primarySpecialties[0]} agencies`
+    : null),
+  (ctx) => (ctx.niche && ctx.niche.toLowerCase() !== ctx.industry.toLowerCase()
+    ? `top ${ctx.niche} companies`
+    : null),
+  (ctx) => (ctx.industry
+    ? `best ${ctx.industry} agencies`
+    : null),
+  (ctx) => (ctx.primarySpecialties[0]
+    ? `best ${ctx.primarySpecialties[0]} agencies ${CURRENT_YEAR}`
+    : null),
+  (ctx) => (ctx.industry
+    ? `${ctx.industry} agency list ${CURRENT_YEAR}`
+    : null),
 ];
 
 export function buildListicleQueries(ctx: BusinessContext): string[] {
+  // Tier 1: use AI-generated queries if available — they are already contextual and specific
+  if (ctx.competitorSearchQueries && ctx.competitorSearchQueries.length > 0) {
+    const queries = ctx.competitorSearchQueries.slice(0, MAX_QUERIES);
+    return queries;
+  }
+
+  // Tier 2: template fallback — derives queries from structured context fields
   const queries: string[] = [];
   const seen = new Set<string>();
 
-  for (const template of TEMPLATES) {
+  for (const template of FALLBACK_TEMPLATES) {
     if (queries.length >= MAX_QUERIES) break;
 
     const q = template(ctx);
     if (!q) continue;
 
-    // Deduplicate by normalized form to avoid near-identical queries
     const key = q.toLowerCase().replace(/\s+/g, ' ').trim();
     if (seen.has(key)) continue;
 

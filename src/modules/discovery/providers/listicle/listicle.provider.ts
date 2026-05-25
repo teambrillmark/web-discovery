@@ -55,8 +55,22 @@ export class ListicleExtractionProvider implements IDiscoveryProvider {
       return [];
     }
 
+    const queriesFromAI =
+      businessContext.competitorSearchQueries &&
+      businessContext.competitorSearchQueries.length > 0;
+
     this.logger.info(
-      { queryId, provider: this.name, queryCount: queries.length, queries },
+      {
+        queryId,
+        provider: this.name,
+        queryCount: queries.length,
+        queries,
+        querySource: queriesFromAI ? 'ai-generated' : 'template-fallback',
+        influencedBy: queriesFromAI
+          ? ['competitorSearchQueries']
+          : ['primaryCompetitiveIdentity', 'primarySpecialties', 'industry', 'niche'],
+        primaryCompetitiveIdentity: businessContext.primaryCompetitiveIdentity,
+      },
       'Listicle extraction started',
     );
 

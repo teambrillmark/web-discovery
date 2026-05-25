@@ -13,6 +13,12 @@ model Competitor {
   rawInput         String
   status           CompetitorStatus @default(DISCOVERED)
   discoverySource  String
+  // Tracks which generation of the discovery pipeline found this competitor.
+  // Increment when making breaking changes to extraction/query logic so stale
+  // intelligence can be identified, filtered, or reset without a full truncation.
+  // Generation 1 = pre-competitive-intent pipeline (flat service discovery).
+  // Generation 2 = competitive-intent pipeline (primaryCompetitiveIdentity-anchored).
+  pipelineVersion  Int              @default(2)
   discoveredAt     DateTime         @default(now())
   lastDiscoveredAt DateTime         @default(now())
   createdAt        DateTime         @default(now())
@@ -22,6 +28,7 @@ model Competitor {
 
   @@index([normalizedDomain])
   @@index([status])
+  @@index([pipelineVersion])
   @@map("competitors")
 }
 
@@ -41,6 +48,61 @@ model Discovery {
   @@index([queryId])
   @@index([source])
   @@map("discoveries")
+}
+
+// Rejected candidates are intelligence too.
+// Knowing a domain is NOT a competitor prevents reprocessing it on future runs
+// and allows analysis of which discovery providers generate the most noise.
+model RejectedCandidate {
+  id              String   @id @default(uuid())
+  domain          String
+  queryId         String
+  rejectionReason String
+  // "rule-filter" = cheap rule caught it; "ai-validation" = AI determined irrelevance
+  rejectionStage  String
+  // Entity type classification: agency, saas, tool, community, job-board, etc.
+  classification  String
+  // Relevance determination from AI stage (null for rule-filter rejections)
+  relevance       String?
+  confidence      Float
+  // Which discovery provider surfaced this candidate
+  provider        String?
+  rejectedAt      DateTime @default(now())
+  createdAt       DateTime @default(now())
+
+  @@index([queryId])
+  @@index([domain])
+  @@index([rejectionReason])
+  @@map("rejected_candidates")
+}
+
+// Profiles extracted for each discovered competitor, scoped to a discovery run.
+// AI extracts the profile; deterministic code scores and ranks.
+// Not FK-linked to Competitor so profiling never blocks discovery persistence.
+model CompetitorProfile {
+  id                         String   @id @default(uuid())
+  domain                     String
+  queryId                    String
+  companyType                String?
+  industry                   String?
+  niche                      String?
+  primaryCompetitiveIdentity String?
+  primarySpecialties         Json     @default("[]")
+  coreServices               Json     @default("[]")
+  targetAudience             Json     @default("[]")
+  positioning                String?
+  aiConfidence               String   @default("low")
+  relevanceScore             Float    @default(0)
+  scoreConfidence            String   @default("low")
+  matchedSignals             Json     @default("{}")
+  scoringReasoning           Json     @default("[]")
+  createdAt                  DateTime @default(now())
+
+  @@unique([domain, queryId])
+  @@index([domain])
+  @@index([queryId])
+  @@index([relevanceScore])
+  @@map("competitor_profiles")
 }
 
 enum CompetitorStatus {

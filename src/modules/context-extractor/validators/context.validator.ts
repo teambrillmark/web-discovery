@@ -10,8 +10,17 @@ export const ContextExtractorInputSchema = z.object({
 
 export const AIBusinessContextSchema = z.object({
   companyType: z.string().min(1).max(100).default('Unknown'),
+  category: z.string().min(1).max(200).default('Unknown'),
   industry: z.string().min(1).max(200).default('Unknown'),
   niche: z.string().min(1).max(300).default('Unknown'),
+  // Competitive intelligence fields
+  primaryCompetitiveIdentity: z.string().min(1).max(300).default('Unknown'),
+  primarySpecialties: z.array(z.string().min(1).max(200)).max(6).default([]),
+  secondaryCapabilities: z.array(z.string().min(1).max(200)).max(10).default([]),
+  coreServices: z.array(z.string().min(1).max(200)).max(10).default([]),
+  competitiveSurfaces: z.array(z.string().min(1).max(200)).max(8).default([]),
+  competitorSearchQueries: z.array(z.string().min(1).max(300)).max(8).default([]),
+  // Flat list retained
   services: z.array(z.string().min(1).max(200)).max(20).default([]),
   targetAudience: z.array(z.string().min(1).max(200)).max(10).default([]),
   positioningSummary: z.string().max(1000).default(''),

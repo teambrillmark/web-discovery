@@ -2,8 +2,17 @@ import { AppError } from '../../../lib/errors';
 
 export interface BusinessContext {
   companyType: string;
+  category: string;
   industry: string;
   niche: string;
+  // Competitive intelligence layer
+  primaryCompetitiveIdentity: string;
+  primarySpecialties: string[];
+  secondaryCapabilities: string[];
+  coreServices: string[];
+  competitiveSurfaces: string[];
+  competitorSearchQueries: string[];
+  // Flat list retained for backward compatibility
   services: string[];
   targetAudience: string[];
   positioningSummary: string;

@@ -6,13 +6,15 @@ export interface RetryOptions {
   backoffMultiplier?: number;
   logger: Logger;
   context: string;
+  // Return false to stop retrying immediately (e.g. daily quota exhausted).
+  shouldRetry?: (error: Error) => boolean;
 }
 
 export async function withRetry<T>(
   fn: () => Promise<T>,
   options: RetryOptions,
 ): Promise<T> {
-  const { maxAttempts, baseDelayMs, backoffMultiplier = 2, logger, context } = options;
+  const { maxAttempts, baseDelayMs, backoffMultiplier = 2, logger, context, shouldRetry } = options;
   let lastError: Error | undefined;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -20,6 +22,11 @@ export async function withRetry<T>(
       return await fn();
     } catch (error) {
       lastError = error instanceof Error ? error : new Error(String(error));
+
+      if (shouldRetry && !shouldRetry(lastError)) {
+        logger.error({ context, attempt, error: lastError.message }, 'Non-retriable error — aborting retries');
+        throw lastError;
+      }
 
       if (attempt < maxAttempts) {
         const delayMs = baseDelayMs * Math.pow(backoffMultiplier, attempt - 1);

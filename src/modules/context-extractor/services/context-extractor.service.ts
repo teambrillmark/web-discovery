@@ -58,7 +58,14 @@ export class ContextExtractorService {
     };
 
     this.logger.info(
-      { ...logCtx, confidence: context.confidence, industry: context.industry },
+      {
+        ...logCtx,
+        confidence: context.confidence,
+        industry: context.industry,
+        primaryCompetitiveIdentity: context.primaryCompetitiveIdentity,
+        primarySpecialties: context.primarySpecialties,
+        competitorSearchQueriesCount: context.competitorSearchQueries.length,
+      },
       'ContextExtractor: run complete',
     );
 

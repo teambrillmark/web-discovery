@@ -35,8 +35,24 @@ export class GroqAIProvider implements IDiscoveryProvider {
   async discover(input: DiscoveryInput): Promise<ProviderResult[]> {
     const logCtx = { queryId: input.queryId, domain: input.normalizedDomain, model: this.model };
 
+    const ctx = input.businessContext;
+    const usingIntentFields =
+      ctx &&
+      ctx.primaryCompetitiveIdentity !== undefined &&
+      ctx.primaryCompetitiveIdentity !== 'Unknown';
+
     this.logger.info(
-      { ...logCtx, excludedCount: input.exclusions.length },
+      {
+        ...logCtx,
+        excludedCount: input.exclusions.length,
+        primaryCompetitiveIdentity: ctx?.primaryCompetitiveIdentity ?? 'none',
+        primarySpecialties: ctx?.primarySpecialties ?? [],
+        competitiveSurfaces: ctx?.competitiveSurfaces ?? [],
+        promptMode: usingIntentFields ? 'competitive-identity' : 'legacy-services',
+        influencedBy: usingIntentFields
+          ? ['primaryCompetitiveIdentity', 'primarySpecialties', 'competitiveSurfaces']
+          : ['industry', 'niche', 'services'],
+      },
       'Groq AI discovery started',
     );
 
@@ -49,6 +65,7 @@ export class GroqAIProvider implements IDiscoveryProvider {
         baseDelayMs: this.retryDelayMs,
         logger: this.logger,
         context: 'groq-ai-discovery',
+        shouldRetry: isRetriableGroqError,
       });
     } catch (error) {
       this.logger.error({ ...logCtx, error }, 'Groq AI discovery failed after all retries — returning empty');
@@ -126,4 +143,10 @@ export class GroqAIProvider implements IDiscoveryProvider {
 
     return valid;
   }
+}
+
+function isRetriableGroqError(error: Error): boolean {
+  const msg = error.message;
+  if (!msg.includes('429')) return true;
+  return !msg.includes('tokens per day') && !msg.includes('TPD');
 }

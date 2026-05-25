@@ -1,0 +1,3577 @@
+{
+  "exportedAt": "2026-05-22T13:23:41.971Z",
+  "reason": "intelligence-reset: clearing pipelineVersion=1 (gen-1) data before gen-2 rebuild",
+  "stats": {
+    "competitorCount": 132,
+    "discoveryCount": 170,
+    "distinctRuns": 12,
+    "bySource": [
+      {
+        "discoverySource": "listicle-extraction",
+        "pipelineVersion": 1,
+        "cnt": 77
+      },
+      {
+        "discoverySource": "groq",
+        "pipelineVersion": 1,
+        "cnt": 55
+      }
+    ],
+    "byVersion": [
+      {
+        "pipelineVersion": 1,
+        "cnt": 132
+      }
+    ]
+  },
+  "competitors": [
+    {
+      "id": "dc1fe3e8-5efa-4170-91f7-5e5249082d76",
+      "normalizedDomain": "vwo.com",
+      "rawInput": "vwo.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "39450acd-03f6-417c-894a-96a13eed0cc4",
+          "competitorId": "dc1fe3e8-5efa-4170-91f7-5e5249082d76",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "vwo.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "bf4910b0-3ea9-482d-9c90-181680c5eb75",
+          "competitorId": "dc1fe3e8-5efa-4170-91f7-5e5249082d76",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "vwo.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "dcf97fe2-59d8-4c89-8267-f03711bf332e",
+          "competitorId": "dc1fe3e8-5efa-4170-91f7-5e5249082d76",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "vwo.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        },
+        {
+          "id": "a95e45b1-090b-47d4-a6ad-ee0d882357a7",
+          "competitorId": "dc1fe3e8-5efa-4170-91f7-5e5249082d76",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "vwo.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        },
+        {
+          "id": "a7012a19-dea9-4f9c-b843-a8722ff60b47",
+          "competitorId": "dc1fe3e8-5efa-4170-91f7-5e5249082d76",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "vwo.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "b377eea2-1e84-4190-bbcc-39d9a0c87263",
+      "normalizedDomain": "conversionxl.com",
+      "rawInput": "conversionxl.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "69fb425e-914f-425b-a351-a072c9ce6b17",
+          "competitorId": "b377eea2-1e84-4190-bbcc-39d9a0c87263",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "conversionxl.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "08d7aec6-cf3e-4a5e-8bd1-df82d839cdb9",
+          "competitorId": "b377eea2-1e84-4190-bbcc-39d9a0c87263",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "conversionxl.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        },
+        {
+          "id": "11e24c55-aba2-4d27-8d76-dfae0f77427a",
+          "competitorId": "b377eea2-1e84-4190-bbcc-39d9a0c87263",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "conversionxl.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "59b62979-a23d-45af-9059-c1475d967003",
+      "normalizedDomain": "widerfunnel.com",
+      "rawInput": "widerfunnel.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "84d48e08-b727-41ba-846f-06c1b0a239aa",
+          "competitorId": "59b62979-a23d-45af-9059-c1475d967003",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "widerfunnel.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "39784927-3667-4f1c-ab08-dbc98084fe5e",
+          "competitorId": "59b62979-a23d-45af-9059-c1475d967003",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "widerfunnel.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        },
+        {
+          "id": "22f9b2c3-5625-4e79-a373-2b09cf98a120",
+          "competitorId": "59b62979-a23d-45af-9059-c1475d967003",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "widerfunnel.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "b9c6d515-a19a-4e0a-ae75-28e7e4ff9451",
+      "normalizedDomain": "optimizely.com",
+      "rawInput": "optimizely.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "765737e6-1c8c-4bca-a7f6-eddc78bcfc10",
+          "competitorId": "b9c6d515-a19a-4e0a-ae75-28e7e4ff9451",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "optimizely.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "79068661-2955-48c3-a03a-c5dec8c6894b",
+          "competitorId": "b9c6d515-a19a-4e0a-ae75-28e7e4ff9451",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "optimizely.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "296315d9-def9-4a3b-8c9b-d2d70506e1ac",
+          "competitorId": "b9c6d515-a19a-4e0a-ae75-28e7e4ff9451",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "optimizely.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        },
+        {
+          "id": "52079641-f7fc-4f86-967c-a331f78ba508",
+          "competitorId": "b9c6d515-a19a-4e0a-ae75-28e7e4ff9451",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "optimizely.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        },
+        {
+          "id": "82687a5c-17be-40c5-977e-057229ffb142",
+          "competitorId": "b9c6d515-a19a-4e0a-ae75-28e7e4ff9451",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "optimizely.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "3bc356b9-ed58-4f99-85ee-92e851ece27e",
+      "normalizedDomain": "sentientascend.com",
+      "rawInput": "sentientascend.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "96fa8bb7-b5e8-4007-92a0-8cf85f553e3c",
+          "competitorId": "3bc356b9-ed58-4f99-85ee-92e851ece27e",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sentientascend.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "cc7010b0-62f1-47e1-80fa-561055de7f03",
+          "competitorId": "3bc356b9-ed58-4f99-85ee-92e851ece27e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sentientascend.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "f5fd4c2d-2863-4847-a2c2-fbd6aaebbd8f",
+          "competitorId": "3bc356b9-ed58-4f99-85ee-92e851ece27e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sentientascend.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        },
+        {
+          "id": "657ada8b-dec5-4b42-a68e-42bd04595320",
+          "competitorId": "3bc356b9-ed58-4f99-85ee-92e851ece27e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sentientascend.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "041314f7-0d04-4fae-946b-a832e3deac41",
+      "normalizedDomain": "trymyui.com",
+      "rawInput": "trymyui.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:12.392Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:03:12.393Z",
+      "discoveries": [
+        {
+          "id": "37182255-3ed1-4caf-8397-6e456dcc1c97",
+          "competitorId": "041314f7-0d04-4fae-946b-a832e3deac41",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trymyui.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "080346ed-4dd4-4cd4-b570-2c04783a95b4",
+          "competitorId": "041314f7-0d04-4fae-946b-a832e3deac41",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trymyui.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "6f0b7be6-23d0-46af-b4fb-0af77822cdf1",
+          "competitorId": "041314f7-0d04-4fae-946b-a832e3deac41",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trymyui.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        },
+        {
+          "id": "b5ea2320-c755-49ca-99c1-b5feb5668c02",
+          "competitorId": "041314f7-0d04-4fae-946b-a832e3deac41",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trymyui.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "9a566017-7b71-4a82-9d65-ccab8b579a86",
+      "normalizedDomain": "abtasty.com",
+      "rawInput": "abtasty.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "8b095e6e-829b-44c2-b376-366ef7ccfad6",
+          "competitorId": "9a566017-7b71-4a82-9d65-ccab8b579a86",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "abtasty.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "6feb2f2e-34e5-449e-a39f-5a597679e8ae",
+          "competitorId": "9a566017-7b71-4a82-9d65-ccab8b579a86",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "abtasty.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "b34d2a5b-2e48-4622-8356-22375c632e90",
+          "competitorId": "9a566017-7b71-4a82-9d65-ccab8b579a86",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "abtasty.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        },
+        {
+          "id": "ded4f502-7cfb-49f1-9cac-eefe53cd24df",
+          "competitorId": "9a566017-7b71-4a82-9d65-ccab8b579a86",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "abtasty.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        },
+        {
+          "id": "7ba3f66c-372c-4915-8f39-3a99c4842977",
+          "competitorId": "9a566017-7b71-4a82-9d65-ccab8b579a86",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "abtasty.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "ed91c225-7ef5-4984-a88a-3efc864b3021",
+      "normalizedDomain": "crazyegg.com",
+      "rawInput": "crazyegg.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "6769eb8d-5e21-49e4-8502-41d892211a48",
+          "competitorId": "ed91c225-7ef5-4984-a88a-3efc864b3021",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crazyegg.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "c042df19-0380-4122-b211-061723ff79b5",
+          "competitorId": "ed91c225-7ef5-4984-a88a-3efc864b3021",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crazyegg.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "d72395bb-dcc3-454b-b3fc-95d8c64ffc74",
+          "competitorId": "ed91c225-7ef5-4984-a88a-3efc864b3021",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crazyegg.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        },
+        {
+          "id": "d7b52ae9-9ffc-4bd6-ae36-24a821297d7e",
+          "competitorId": "ed91c225-7ef5-4984-a88a-3efc864b3021",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crazyegg.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        },
+        {
+          "id": "09d724d0-8879-4784-801d-e1d96d7774b2",
+          "competitorId": "ed91c225-7ef5-4984-a88a-3efc864b3021",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crazyegg.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "a0960492-039a-4906-bf0e-48f242f212a5",
+      "normalizedDomain": "userzoom.com",
+      "rawInput": "userzoom.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T05:28:53.762Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T05:28:53.763Z",
+      "discoveries": [
+        {
+          "id": "faae514d-f916-41b1-b13c-caf27bf29f2c",
+          "competitorId": "a0960492-039a-4906-bf0e-48f242f212a5",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "userzoom.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "68541ca9-95d1-4e58-a66b-e62c277fb532",
+          "competitorId": "a0960492-039a-4906-bf0e-48f242f212a5",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "userzoom.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        }
+      ]
+    },
+    {
+      "id": "5f29cb7d-69f3-4520-82be-176de11f6c2d",
+      "normalizedDomain": "sitefinity.com",
+      "rawInput": "sitefinity.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:16.669Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:12.392Z",
+      "createdAt": "2026-05-21T15:38:17.452Z",
+      "updatedAt": "2026-05-22T07:03:12.393Z",
+      "discoveries": [
+        {
+          "id": "3695d949-7fe6-4dec-ad77-cf24f719d247",
+          "competitorId": "5f29cb7d-69f3-4520-82be-176de11f6c2d",
+          "queryId": "ef8aa905-046e-41ef-98c6-c4ee34333a76",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sitefinity.com",
+          "discoveredAt": "2026-05-21T15:38:16.669Z",
+          "createdAt": "2026-05-21T15:38:17.691Z"
+        },
+        {
+          "id": "3c175ba4-7898-4b4f-81bc-933625aad8d7",
+          "competitorId": "5f29cb7d-69f3-4520-82be-176de11f6c2d",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sitefinity.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "7f44d109-d359-444e-a8e0-ef4185d17d30",
+          "competitorId": "5f29cb7d-69f3-4520-82be-176de11f6c2d",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sitefinity.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        },
+        {
+          "id": "d5638fa8-68f3-4223-a3d1-afd112c4b07e",
+          "competitorId": "5f29cb7d-69f3-4520-82be-176de11f6c2d",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sitefinity.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "51f114e0-c04f-419c-abd2-7674b65ea95e",
+      "normalizedDomain": "speero.com",
+      "rawInput": "speero.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "a399fe75-ea86-422b-b63e-dd6f5e8daec4",
+          "competitorId": "51f114e0-c04f-419c-abd2-7674b65ea95e",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "speero.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        },
+        {
+          "id": "f95a0028-7497-45a9-af40-50cc5688b217",
+          "competitorId": "51f114e0-c04f-419c-abd2-7674b65ea95e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "speero.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "0b4b26c6-7aa0-4c39-af44-67d2b985144a",
+      "normalizedDomain": "trymata.com",
+      "rawInput": "trymata.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-21T15:38:58.187Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-21T15:38:58.496Z",
+      "discoveries": [
+        {
+          "id": "f532a74f-b754-4cd6-91c9-da3f51afdf0f",
+          "competitorId": "0b4b26c6-7aa0-4c39-af44-67d2b985144a",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trymata.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        }
+      ]
+    },
+    {
+      "id": "0be3b74a-d212-4fb4-b75b-862448c37ed8",
+      "normalizedDomain": "userlytics.com",
+      "rawInput": "userlytics.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-21T15:38:58.187Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-21T15:38:58.496Z",
+      "discoveries": [
+        {
+          "id": "ee244460-8eef-4ef9-9e26-8b50e3768e22",
+          "competitorId": "0be3b74a-d212-4fb4-b75b-862448c37ed8",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "userlytics.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        }
+      ]
+    },
+    {
+      "id": "9a6a6488-93b3-483c-9c7e-61e013fe12cf",
+      "normalizedDomain": "swarm.net",
+      "rawInput": "swarm.net",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-21T15:38:58.187Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-21T15:38:58.496Z",
+      "discoveries": [
+        {
+          "id": "c50a2e4b-3eea-4af9-95d6-5332b41ff61d",
+          "competitorId": "9a6a6488-93b3-483c-9c7e-61e013fe12cf",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "swarm.net",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        }
+      ]
+    },
+    {
+      "id": "2352bae2-a2b0-41ad-8f32-13e03b5121c7",
+      "normalizedDomain": "usabilityhub.com",
+      "rawInput": "usabilityhub.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-21T15:38:58.187Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-21T15:38:58.496Z",
+      "discoveries": [
+        {
+          "id": "6e2b1290-c818-4a54-9bec-006cb8c7b3b2",
+          "competitorId": "2352bae2-a2b0-41ad-8f32-13e03b5121c7",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "usabilityhub.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        }
+      ]
+    },
+    {
+      "id": "2eb769be-83a5-4eb8-9750-5f4934b7a6ea",
+      "normalizedDomain": "growthlab.com",
+      "rawInput": "growthlab.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-21T15:38:58.187Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-21T15:38:58.496Z",
+      "discoveries": [
+        {
+          "id": "a1ad1e39-79ce-4d04-a855-38e1e4b21408",
+          "competitorId": "2eb769be-83a5-4eb8-9750-5f4934b7a6ea",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "growthlab.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        }
+      ]
+    },
+    {
+      "id": "d225452c-c644-4050-9ac7-c9abc01414cc",
+      "normalizedDomain": "convert.com",
+      "rawInput": "convert.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-22T06:57:46.475Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-22T06:57:46.476Z",
+      "discoveries": [
+        {
+          "id": "35a6f0c9-0484-463b-ae47-e91df5850336",
+          "competitorId": "d225452c-c644-4050-9ac7-c9abc01414cc",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "convert.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        },
+        {
+          "id": "583a439c-e597-4747-ad15-954647d9ad2b",
+          "competitorId": "d225452c-c644-4050-9ac7-c9abc01414cc",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "convert.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "5b104328-54da-4506-8e2a-a031002aae59",
+          "competitorId": "d225452c-c644-4050-9ac7-c9abc01414cc",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "convert.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        }
+      ]
+    },
+    {
+      "id": "dc20078d-c60e-44b2-8083-8a2ea10e57f3",
+      "normalizedDomain": "whatusersdo.com",
+      "rawInput": "whatusersdo.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-21T15:38:58.187Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-21T15:38:58.496Z",
+      "discoveries": [
+        {
+          "id": "65617230-ba77-440d-a875-1109dad2ca0a",
+          "competitorId": "dc20078d-c60e-44b2-8083-8a2ea10e57f3",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "whatusersdo.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        }
+      ]
+    },
+    {
+      "id": "d96c03ad-4bf4-49f6-ad56-340c056c3ca4",
+      "normalizedDomain": "experimentzone.com",
+      "rawInput": "experimentzone.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T15:38:58.187Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T15:38:58.496Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "b6363712-9d4e-4e54-8ad6-d1e32c0c2c4a",
+          "competitorId": "d96c03ad-4bf4-49f6-ad56-340c056c3ca4",
+          "queryId": "de0a8ce5-aa50-4e75-94cf-88624a847375",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "experimentzone.com",
+          "discoveredAt": "2026-05-21T15:38:58.187Z",
+          "createdAt": "2026-05-21T15:38:58.727Z"
+        },
+        {
+          "id": "f1a2441f-1570-4a6e-a33a-998544fca1ec",
+          "competitorId": "d96c03ad-4bf4-49f6-ad56-340c056c3ca4",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "experimentzone.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "f0b5f92b-5fc7-4181-ad03-14400b59ad54",
+      "normalizedDomain": "theexperimentlab.com",
+      "rawInput": "theexperimentlab.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "07d90c59-b732-4f95-9bd3-bc714f5e38fe",
+          "competitorId": "f0b5f92b-5fc7-4181-ad03-14400b59ad54",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "theexperimentlab.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "a7aea008-59ed-446d-b8d1-f027186c10d0",
+      "normalizedDomain": "growthlabs.io",
+      "rawInput": "growthlabs.io",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "cae475b0-0cb9-4861-96c8-70ff4e7d8a6b",
+          "competitorId": "a7aea008-59ed-446d-b8d1-f027186c10d0",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "growthlabs.io",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "96c39152-3ced-4089-8cf9-fec07c107b1d",
+      "normalizedDomain": "experimentationhub.com",
+      "rawInput": "experimentationhub.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "122133e5-9ca6-46fe-9239-dfc5315fb9b2",
+          "competitorId": "96c39152-3ced-4089-8cf9-fec07c107b1d",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "experimentationhub.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "66a4862a-e44d-4e84-a6b9-44b33cbcc131",
+      "normalizedDomain": "apptimize.com",
+      "rawInput": "apptimize.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "cf2d3a20-3285-4763-8c52-d32e7da0a387",
+          "competitorId": "66a4862a-e44d-4e84-a6b9-44b33cbcc131",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "apptimize.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "db1cee6d-bef3-476c-b87d-46b95372274a",
+      "normalizedDomain": "practicalecommerce.com",
+      "rawInput": "practicalecommerce.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "23c0d2a4-306f-43ee-9ede-37cb44f3dd22",
+          "competitorId": "db1cee6d-bef3-476c-b87d-46b95372274a",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "practicalecommerce.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "e6b92402-7a25-4c10-b2ef-5808592adbcf",
+      "normalizedDomain": "digirank.com",
+      "rawInput": "digirank.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "68d8fe3f-cfdb-4067-ad43-b1942e0f4c0b",
+          "competitorId": "e6b92402-7a25-4c10-b2ef-5808592adbcf",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "digirank.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "2233c0ab-0dcf-4531-9bc2-807aca6c0534",
+      "normalizedDomain": "splitbase.com",
+      "rawInput": "splitbase.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "b336edeb-88fc-4ec8-b10a-f9696960302b",
+          "competitorId": "2233c0ab-0dcf-4531-9bc2-807aca6c0534",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "splitbase.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        },
+        {
+          "id": "561d6eb6-c523-4d29-9f37-687c350649c9",
+          "competitorId": "2233c0ab-0dcf-4531-9bc2-807aca6c0534",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "splitbase.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "74e59b4f-4145-46a5-a3a6-88308b9ab5b9",
+      "normalizedDomain": "crometrics.com",
+      "rawInput": "crometrics.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:16.255Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-22T07:06:16.256Z",
+      "discoveries": [
+        {
+          "id": "6492ba8f-5df2-40d5-9295-3f2ea337bf03",
+          "competitorId": "74e59b4f-4145-46a5-a3a6-88308b9ab5b9",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crometrics.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        },
+        {
+          "id": "6d8a1d6d-a1c1-4e80-b6a8-95e86efa9a39",
+          "competitorId": "74e59b4f-4145-46a5-a3a6-88308b9ab5b9",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crometrics.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "c7c2c1ed-6366-4f10-8f6b-6bf71bfd0f8f",
+      "normalizedDomain": "swellpath.com",
+      "rawInput": "swellpath.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "74ad2839-eaa8-4b3c-8333-5ab9f3c7805d",
+          "competitorId": "c7c2c1ed-6366-4f10-8f6b-6bf71bfd0f8f",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "swellpath.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "5832e363-7cf2-4712-91b0-44fcf5a4a166",
+      "normalizedDomain": "croatianpixel.com",
+      "rawInput": "croatianpixel.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T17:52:07.180Z",
+      "lastDiscoveredAt": "2026-05-21T17:52:07.180Z",
+      "createdAt": "2026-05-21T17:52:08.027Z",
+      "updatedAt": "2026-05-21T17:52:08.027Z",
+      "discoveries": [
+        {
+          "id": "9a0c6190-3d52-4dce-82f7-73ba35a20583",
+          "competitorId": "5832e363-7cf2-4712-91b0-44fcf5a4a166",
+          "queryId": "0e0c2a9d-3447-4ebd-aa70-50b339f56ce0",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "croatianpixel.com",
+          "discoveredAt": "2026-05-21T17:52:07.180Z",
+          "createdAt": "2026-05-21T17:52:08.287Z"
+        }
+      ]
+    },
+    {
+      "id": "fcc9bc6c-1d58-440b-b66f-017a8cca4741",
+      "normalizedDomain": "thegood.com",
+      "rawInput": "thegood.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T18:14:27.945Z",
+      "lastDiscoveredAt": "2026-05-21T18:14:27.945Z",
+      "createdAt": "2026-05-21T18:14:28.918Z",
+      "updatedAt": "2026-05-21T18:14:28.918Z",
+      "discoveries": [
+        {
+          "id": "4525a5e1-89c7-418f-bf4b-eee992e0ecdf",
+          "competitorId": "fcc9bc6c-1d58-440b-b66f-017a8cca4741",
+          "queryId": "62812b52-61c7-4945-bc77-7b45d1e04021",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "thegood.com",
+          "discoveredAt": "2026-05-21T18:14:27.945Z",
+          "createdAt": "2026-05-21T18:14:29.219Z"
+        }
+      ]
+    },
+    {
+      "id": "20923468-bdb3-444a-83a8-55e982094e43",
+      "normalizedDomain": "blueacorn.co",
+      "rawInput": "blueacorn.co",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-21T18:14:27.945Z",
+      "lastDiscoveredAt": "2026-05-21T18:14:27.945Z",
+      "createdAt": "2026-05-21T18:14:28.918Z",
+      "updatedAt": "2026-05-21T18:14:28.918Z",
+      "discoveries": [
+        {
+          "id": "b07fdad6-99de-441a-a96b-7231876133df",
+          "competitorId": "20923468-bdb3-444a-83a8-55e982094e43",
+          "queryId": "62812b52-61c7-4945-bc77-7b45d1e04021",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "blueacorn.co",
+          "discoveredAt": "2026-05-21T18:14:27.945Z",
+          "createdAt": "2026-05-21T18:14:29.219Z"
+        }
+      ]
+    },
+    {
+      "id": "6a01197e-487e-48dd-ad2b-62b0c5cdb75d",
+      "normalizedDomain": "unbounce.com",
+      "rawInput": "unbounce.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:28:52.490Z",
+      "lastDiscoveredAt": "2026-05-22T06:57:46.475Z",
+      "createdAt": "2026-05-22T05:28:53.575Z",
+      "updatedAt": "2026-05-22T06:57:46.476Z",
+      "discoveries": [
+        {
+          "id": "7dfe3fda-5ca3-44d8-aca7-f0110724fc59",
+          "competitorId": "6a01197e-487e-48dd-ad2b-62b0c5cdb75d",
+          "queryId": "550e8400-e29b-41d4-a716-446655440111",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "unbounce.com",
+          "discoveredAt": "2026-05-22T05:28:52.490Z",
+          "createdAt": "2026-05-22T05:28:54.047Z"
+        },
+        {
+          "id": "5070396f-48b3-4242-8143-af237cdc3202",
+          "competitorId": "6a01197e-487e-48dd-ad2b-62b0c5cdb75d",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "unbounce.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        }
+      ]
+    },
+    {
+      "id": "c839c628-8d63-4499-8012-4b43fe07449a",
+      "normalizedDomain": "statsig.com",
+      "rawInput": "statsig.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "4680275a-9393-4815-b400-5609facf96ef",
+          "competitorId": "c839c628-8d63-4499-8012-4b43fe07449a",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "statsig.com",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "4ee9e621-86e8-4e6f-96b6-ba28885f4958",
+      "normalizedDomain": "evolv.ai",
+      "rawInput": "evolv.ai",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "eb7826ea-4f37-47ca-838e-927b2d440639",
+          "competitorId": "4ee9e621-86e8-4e6f-96b6-ba28885f4958",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "evolv.ai",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "deaa2f10-b950-4f55-89a7-785578931383",
+      "normalizedDomain": "testbox.io",
+      "rawInput": "testbox.io",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "d6696b54-eb0d-41f3-ae87-28e87ccc6cc3",
+          "competitorId": "deaa2f10-b950-4f55-89a7-785578931383",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "testbox.io",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "b55c4e17-fec6-4684-b3ae-b2100415fc76",
+      "normalizedDomain": "kameleoon.com",
+      "rawInput": "kameleoon.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "a34b64d4-070f-425c-a3ba-32f1993b7f9e",
+          "competitorId": "b55c4e17-fec6-4684-b3ae-b2100415fc76",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "kameleoon.com",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "f33ea5f8-5f94-4393-ad41-078b148deebe",
+      "normalizedDomain": "conductrics.com",
+      "rawInput": "conductrics.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "c4a14958-24af-4083-8d42-10db129326d0",
+          "competitorId": "f33ea5f8-5f94-4393-ad41-078b148deebe",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "conductrics.com",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "a3c4bef5-2345-4a36-8be1-06d5167ff340",
+      "normalizedDomain": "salecycle.com",
+      "rawInput": "salecycle.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "31997d26-10cf-4fc4-be37-16a10812f2ae",
+          "competitorId": "a3c4bef5-2345-4a36-8be1-06d5167ff340",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "salecycle.com",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "33f0b290-aade-4f75-a97e-636dcb882e6d",
+      "normalizedDomain": "freshrelevance.com",
+      "rawInput": "freshrelevance.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "13c5284e-7159-493a-a1be-c7c848dcebc4",
+          "competitorId": "33f0b290-aade-4f75-a97e-636dcb882e6d",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "freshrelevance.com",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "d7f087f4-714d-4505-9382-55845f42ece0",
+      "normalizedDomain": "yieldify.com",
+      "rawInput": "yieldify.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T05:32:44.969Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T05:32:46.087Z",
+      "discoveries": [
+        {
+          "id": "fa340a2d-5867-4ea6-9354-5fe413d789bf",
+          "competitorId": "d7f087f4-714d-4505-9382-55845f42ece0",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "yieldify.com",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        }
+      ]
+    },
+    {
+      "id": "5773f609-bf32-4533-99ff-6be5ef22e432",
+      "normalizedDomain": "sentient.ai",
+      "rawInput": "sentient.ai",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T05:32:44.969Z",
+      "lastDiscoveredAt": "2026-05-22T06:57:46.475Z",
+      "createdAt": "2026-05-22T05:32:46.087Z",
+      "updatedAt": "2026-05-22T06:57:46.476Z",
+      "discoveries": [
+        {
+          "id": "253f4843-45b3-45d2-9e66-555e762ab168",
+          "competitorId": "5773f609-bf32-4533-99ff-6be5ef22e432",
+          "queryId": "b5273bf2-84e3-444d-8c1b-99c776b92345",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sentient.ai",
+          "discoveredAt": "2026-05-22T05:32:44.969Z",
+          "createdAt": "2026-05-22T05:32:46.337Z"
+        },
+        {
+          "id": "dec0d404-991d-47e4-9b4b-029afe02b638",
+          "competitorId": "5773f609-bf32-4533-99ff-6be5ef22e432",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sentient.ai",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        }
+      ]
+    },
+    {
+      "id": "e15b5331-6872-412d-b2e8-ed76146bb309",
+      "normalizedDomain": "hotjar.com",
+      "rawInput": "hotjar.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T06:57:45.030Z",
+      "lastDiscoveredAt": "2026-05-22T06:57:45.030Z",
+      "createdAt": "2026-05-22T06:57:46.263Z",
+      "updatedAt": "2026-05-22T06:57:46.263Z",
+      "discoveries": [
+        {
+          "id": "3127c402-ebca-4926-aa54-ae7cd76e15df",
+          "competitorId": "e15b5331-6872-412d-b2e8-ed76146bb309",
+          "queryId": "550e8400-e29b-41d4-a716-446655440222",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "hotjar.com",
+          "discoveredAt": "2026-05-22T06:57:45.030Z",
+          "createdAt": "2026-05-22T06:57:46.796Z"
+        }
+      ]
+    },
+    {
+      "id": "aef0371c-7205-41f8-a8bf-66aa65e57b07",
+      "normalizedDomain": "legal.poweredbybranch.com",
+      "rawInput": "legal.poweredbybranch.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "56bb5d5b-bf57-4f5c-acdc-ffb50386c131",
+          "competitorId": "aef0371c-7205-41f8-a8bf-66aa65e57b07",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "legal.poweredbybranch.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "000be9de-955e-4478-971f-b761fdb882d3",
+      "normalizedDomain": "business.safety.google",
+      "rawInput": "business.safety.google",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "11b710bb-4289-4624-8319-3141a7052039",
+          "competitorId": "000be9de-955e-4478-971f-b761fdb882d3",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "business.safety.google",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "7f01705b-72ca-4676-8a43-b0279627fef7",
+      "normalizedDomain": "cookiebot.com",
+      "rawInput": "cookiebot.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "bd9ddba1-040a-488e-bf24-1cf6980d7fe7",
+          "competitorId": "7f01705b-72ca-4676-8a43-b0279627fef7",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "cookiebot.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "6d57df18-ff6d-4f44-918f-aa632aea607e",
+      "normalizedDomain": "014on.com",
+      "rawInput": "014on.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "58a8728c-455c-4319-8e0a-b1dcd4eedab8",
+          "competitorId": "6d57df18-ff6d-4f44-918f-aa632aea607e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "014on.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "034428d2-86f5-4020-abe3-cefe1e798551",
+      "normalizedDomain": "152media.com",
+      "rawInput": "152media.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "663af237-365e-430b-8620-a4147d770379",
+          "competitorId": "034428d2-86f5-4020-abe3-cefe1e798551",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "152media.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "d90cef90-0322-4099-81b2-6708f3efe3d0",
+      "normalizedDomain": "ipromote.com",
+      "rawInput": "ipromote.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "927ff509-4177-4009-b149-2c6476b21737",
+          "competitorId": "d90cef90-0322-4099-81b2-6708f3efe3d0",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "ipromote.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "da007adc-039b-4eaa-9313-5e9f7b5eebd3",
+      "normalizedDomain": "33across.co.uk",
+      "rawInput": "33across.co.uk",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "06be72a5-68df-402d-aa75-c2c747fa08ab",
+          "competitorId": "da007adc-039b-4eaa-9313-5e9f7b5eebd3",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "33across.co.uk",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "7f94acdf-ee27-4af3-b4ef-5399927beb94",
+      "normalizedDomain": "366.fr",
+      "rawInput": "366.fr",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "4b192622-b0bd-420f-8380-cc4e8834a585",
+          "competitorId": "7f94acdf-ee27-4af3-b4ef-5399927beb94",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "366.fr",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "e577d1db-8dea-4a88-bd88-9f0e608e5714",
+      "normalizedDomain": "3q.video",
+      "rawInput": "3q.video",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "58a48823-c933-44df-b797-d741de4fc969",
+          "competitorId": "e577d1db-8dea-4a88-bd88-9f0e608e5714",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "3q.video",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "872fe5c1-22b5-462d-8f0a-47cb36730ee3",
+      "normalizedDomain": "6sense.com",
+      "rawInput": "6sense.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "d46b8e90-4f20-4b62-b68e-2f3f84146e54",
+          "competitorId": "872fe5c1-22b5-462d-8f0a-47cb36730ee3",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "6sense.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "605d6f72-9c8b-45f8-977c-954fa4c9ed6e",
+      "normalizedDomain": "tappx.com",
+      "rawInput": "tappx.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "67dd77e5-6a96-420a-b004-66430adabfca",
+          "competitorId": "605d6f72-9c8b-45f8-977c-954fa4c9ed6e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "tappx.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "fdfb0150-39f0-4836-927c-d9bd964934ae",
+      "normalizedDomain": "9dotsmedia.com",
+      "rawInput": "9dotsmedia.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "8a1e02d1-3316-4719-bb35-35f1140ebbe8",
+          "competitorId": "fdfb0150-39f0-4836-927c-d9bd964934ae",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "9dotsmedia.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "30bc9e53-ef5f-4cad-8cad-133c9e292102",
+      "normalizedDomain": "amillionads.com",
+      "rawInput": "amillionads.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "ecb10922-13cf-433e-89fc-dfde4c6a303b",
+          "competitorId": "30bc9e53-ef5f-4cad-8cad-133c9e292102",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "amillionads.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "fcf05e76-4fda-46cf-8e1f-a082b34a7dfe",
+      "normalizedDomain": "veepee-ad.com",
+      "rawInput": "veepee-ad.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "b3439759-84d2-49db-a00a-f038047979b7",
+          "competitorId": "fcf05e76-4fda-46cf-8e1f-a082b34a7dfe",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "veepee-ad.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "5d11e328-9a46-4aff-9e29-f36139869e3f",
+      "normalizedDomain": "recreativ.com",
+      "rawInput": "recreativ.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "f640fffc-5365-46e4-9754-9351601bb3b4",
+          "competitorId": "5d11e328-9a46-4aff-9e29-f36139869e3f",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "recreativ.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "3fe6b635-574e-4d5b-a203-9f5c39ea4128",
+      "normalizedDomain": "corp.aarki.com",
+      "rawInput": "corp.aarki.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "335a9bf2-7a44-445d-8dea-2669ad94877e",
+          "competitorId": "3fe6b635-574e-4d5b-a203-9f5c39ea4128",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "corp.aarki.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "08219171-c286-468c-9d97-e7925c96e8fd",
+      "normalizedDomain": "abcsinsights.com",
+      "rawInput": "abcsinsights.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "2046b58c-4ef4-4633-9fd4-87319e967aad",
+          "competitorId": "08219171-c286-468c-9d97-e7925c96e8fd",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "abcsinsights.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "34278fb6-d3e0-47f0-9c4f-db0326d46f62",
+      "normalizedDomain": "accenture.com",
+      "rawInput": "accenture.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "908a452c-75f3-4ec5-9db8-99636f4b70c2",
+          "competitorId": "34278fb6-d3e0-47f0-9c4f-db0326d46f62",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "accenture.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "88c26e61-b311-4ad2-bb83-63c2514ca7f0",
+      "normalizedDomain": "instytut-pollster.pl",
+      "rawInput": "instytut-pollster.pl",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "68a9e897-fa82-4630-ae6a-bbcac0eac196",
+          "competitorId": "88c26e61-b311-4ad2-bb83-63c2514ca7f0",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "instytut-pollster.pl",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "1f5a5d18-349c-4a53-88cc-f969f9edfd30",
+      "normalizedDomain": "usertesting.com",
+      "rawInput": "usertesting.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "14f0503b-e986-4084-99ec-cda6b0872a95",
+          "competitorId": "1f5a5d18-349c-4a53-88cc-f969f9edfd30",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "usertesting.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "ef735121-64a3-4f3e-803d-06bdbd8cae56",
+      "normalizedDomain": "8pod.com",
+      "rawInput": "8pod.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:03:11.348Z",
+      "lastDiscoveredAt": "2026-05-22T07:03:11.348Z",
+      "createdAt": "2026-05-22T07:03:12.221Z",
+      "updatedAt": "2026-05-22T07:03:12.221Z",
+      "discoveries": [
+        {
+          "id": "f9d88603-1dff-4bbf-a3dd-54cdf01402a8",
+          "competitorId": "ef735121-64a3-4f3e-803d-06bdbd8cae56",
+          "queryId": "550e8400-e29b-41d4-a716-446655440333",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "8pod.com",
+          "discoveredAt": "2026-05-22T07:03:11.348Z",
+          "createdAt": "2026-05-22T07:03:12.647Z"
+        }
+      ]
+    },
+    {
+      "id": "f869f2b5-816d-4ee2-83cb-b52688076534",
+      "normalizedDomain": "singlegrain.com",
+      "rawInput": "singlegrain.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "a5861c9a-c43a-4b0f-81f7-f03d2ecb9b82",
+          "competitorId": "f869f2b5-816d-4ee2-83cb-b52688076534",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "singlegrain.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "180ef7ea-dab9-4757-8941-4926eecdfe29",
+      "normalizedDomain": "chatgpt.com",
+      "rawInput": "chatgpt.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "ed5f3022-bc5d-4e9a-ad38-70f7690e4dab",
+          "competitorId": "180ef7ea-dab9-4757-8941-4926eecdfe29",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "chatgpt.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "89ab3a3b-944f-448d-983d-a339842b3cf5",
+      "normalizedDomain": "ninjapromo.io",
+      "rawInput": "ninjapromo.io",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "96ca3a03-3c9f-4163-86fb-76902a716b89",
+          "competitorId": "89ab3a3b-944f-448d-983d-a339842b3cf5",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "ninjapromo.io",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "83b5e375-f7c7-4423-8bd8-46919622b279",
+      "normalizedDomain": "spiralyze.com",
+      "rawInput": "spiralyze.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "6db36f80-e4ca-443f-a0d0-974b521e654a",
+          "competitorId": "83b5e375-f7c7-4423-8bd8-46919622b279",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "spiralyze.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "341cc4b7-4d2d-42d1-99da-cfb20dbe1044",
+      "normalizedDomain": "levelingup.com",
+      "rawInput": "levelingup.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "af62d286-43e7-4bf8-909e-7931d9001e58",
+          "competitorId": "341cc4b7-4d2d-42d1-99da-cfb20dbe1044",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "levelingup.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "d4d7ef4f-af28-49bc-a071-4b702c29f0e5",
+      "normalizedDomain": "conversion.com",
+      "rawInput": "conversion.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "0da62e25-dad8-47e5-b72c-cbffa917cd33",
+          "competitorId": "d4d7ef4f-af28-49bc-a071-4b702c29f0e5",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversion.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "ed89232d-8e6f-4ae6-b67c-33efb5f14064",
+      "normalizedDomain": "conversionrate.store",
+      "rawInput": "conversionrate.store",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "b5e578a8-19b7-4aa5-9fd4-71bd0064f6f2",
+          "competitorId": "ed89232d-8e6f-4ae6-b67c-33efb5f14064",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversionrate.store",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "4fe883a4-ab14-4d36-9d51-d13817bc8a0d",
+      "normalizedDomain": "invespcro.com",
+      "rawInput": "invespcro.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "10b83029-da25-423e-b6ae-b18f1e79a236",
+          "competitorId": "4fe883a4-ab14-4d36-9d51-d13817bc8a0d",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "invespcro.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "7f39f045-a0cb-4fdc-a6dd-d5a5302b424b",
+      "normalizedDomain": "conversionsciences.com",
+      "rawInput": "conversionsciences.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "e0bfad4a-b9ce-45a8-8c9d-de739a2df914",
+          "competitorId": "7f39f045-a0cb-4fdc-a6dd-d5a5302b424b",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversionsciences.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "ae947517-f790-46dc-9799-39f63fac10bf",
+      "normalizedDomain": "conversionfanatics.com",
+      "rawInput": "conversionfanatics.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "83bef12c-06c7-4f6e-b81e-98c4d081044e",
+          "competitorId": "ae947517-f790-46dc-9799-39f63fac10bf",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversionfanatics.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "ce1cea0d-4882-4e7e-8d4e-8a4858dfba65",
+      "normalizedDomain": "maven.com",
+      "rawInput": "maven.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "03c8771f-17e0-42ea-8737-1c7073778d11",
+          "competitorId": "ce1cea0d-4882-4e7e-8d4e-8a4858dfba65",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "maven.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "68b68cdd-363d-4025-8580-38dbec2a949e",
+      "normalizedDomain": "accessibe.com",
+      "rawInput": "accessibe.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "9c985fd5-38de-4ad9-82b8-1332ac697f3d",
+          "competitorId": "68b68cdd-363d-4025-8580-38dbec2a949e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "accessibe.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "e0bd3520-e8bb-45ea-99dc-55dbeb637fa7",
+      "normalizedDomain": "cookiedatabase.org",
+      "rawInput": "cookiedatabase.org",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "82cfeea7-aa18-4d11-8c3b-870d22ad607e",
+          "competitorId": "e0bd3520-e8bb-45ea-99dc-55dbeb637fa7",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "cookiedatabase.org",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "380929e7-1b2c-4fd9-8321-71ca5b96e206",
+      "normalizedDomain": "geo.v9digital.com",
+      "rawInput": "geo.v9digital.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "490fc658-0ac6-4610-b67a-f077e9902507",
+          "competitorId": "380929e7-1b2c-4fd9-8321-71ca5b96e206",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "geo.v9digital.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "23f4ec98-ee49-48a1-baaf-0acb33b8882e",
+      "normalizedDomain": "sitetuners.com",
+      "rawInput": "sitetuners.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "74c74c64-05bb-437d-ae0a-14831d68e625",
+          "competitorId": "23f4ec98-ee49-48a1-baaf-0acb33b8882e",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sitetuners.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "e2a1cb3a-69d5-4f24-bd8b-c622f79bde76",
+      "normalizedDomain": "rednavelconsulting.com",
+      "rawInput": "rednavelconsulting.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "90ca309a-7529-4b72-9c6d-145120785478",
+          "competitorId": "e2a1cb3a-69d5-4f24-bd8b-c622f79bde76",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "rednavelconsulting.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "8258e469-91dc-46c4-b7d6-bf8d44209e62",
+      "normalizedDomain": "conversion-rate-experts.com",
+      "rawInput": "conversion-rate-experts.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T07:06:15.155Z",
+      "lastDiscoveredAt": "2026-05-22T07:06:15.155Z",
+      "createdAt": "2026-05-22T07:06:16.089Z",
+      "updatedAt": "2026-05-22T07:06:16.089Z",
+      "discoveries": [
+        {
+          "id": "c4ba6c8e-2289-4506-94f6-9396d1064e7b",
+          "competitorId": "8258e469-91dc-46c4-b7d6-bf8d44209e62",
+          "queryId": "550e8400-e29b-41d4-a716-446655440444",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversion-rate-experts.com",
+          "discoveredAt": "2026-05-22T07:06:15.155Z",
+          "createdAt": "2026-05-22T07:06:16.495Z"
+        }
+      ]
+    },
+    {
+      "id": "b3672f6e-ba85-43a7-bee8-9123945f0a8c",
+      "normalizedDomain": "convertize.io",
+      "rawInput": "convertize.io",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T10:30:07.517Z",
+      "lastDiscoveredAt": "2026-05-22T10:30:07.517Z",
+      "createdAt": "2026-05-22T10:30:08.222Z",
+      "updatedAt": "2026-05-22T10:30:08.222Z",
+      "discoveries": [
+        {
+          "id": "5c2cfbbf-457a-473d-bc83-68a67e9555cc",
+          "competitorId": "b3672f6e-ba85-43a7-bee8-9123945f0a8c",
+          "queryId": "ca3b5b9b-1671-40cb-926f-374fb8e9ad03",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "convertize.io",
+          "discoveredAt": "2026-05-22T10:30:07.517Z",
+          "createdAt": "2026-05-22T10:30:08.453Z"
+        }
+      ]
+    },
+    {
+      "id": "8846045f-ea4b-49be-9e1d-18e4f1b2de17",
+      "normalizedDomain": "sitegainer.com",
+      "rawInput": "sitegainer.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T10:30:07.517Z",
+      "lastDiscoveredAt": "2026-05-22T10:30:07.517Z",
+      "createdAt": "2026-05-22T10:30:08.222Z",
+      "updatedAt": "2026-05-22T10:30:08.222Z",
+      "discoveries": [
+        {
+          "id": "f9f3af76-fefc-47e0-83ff-68277f51de49",
+          "competitorId": "8846045f-ea4b-49be-9e1d-18e4f1b2de17",
+          "queryId": "ca3b5b9b-1671-40cb-926f-374fb8e9ad03",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sitegainer.com",
+          "discoveredAt": "2026-05-22T10:30:07.517Z",
+          "createdAt": "2026-05-22T10:30:08.453Z"
+        }
+      ]
+    },
+    {
+      "id": "fa18cdf3-d7af-4a25-abec-bdae3c297a27",
+      "normalizedDomain": "growthengine.ai",
+      "rawInput": "growthengine.ai",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T10:30:07.517Z",
+      "lastDiscoveredAt": "2026-05-22T10:30:07.517Z",
+      "createdAt": "2026-05-22T10:30:08.222Z",
+      "updatedAt": "2026-05-22T10:30:08.222Z",
+      "discoveries": [
+        {
+          "id": "57d76d01-e025-42bd-8772-6bbce2cbc2e4",
+          "competitorId": "fa18cdf3-d7af-4a25-abec-bdae3c297a27",
+          "queryId": "ca3b5b9b-1671-40cb-926f-374fb8e9ad03",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "growthengine.ai",
+          "discoveredAt": "2026-05-22T10:30:07.517Z",
+          "createdAt": "2026-05-22T10:30:08.453Z"
+        }
+      ]
+    },
+    {
+      "id": "bc2bbde3-b574-4bb4-bddf-2344cd35ea8c",
+      "normalizedDomain": "testify.io",
+      "rawInput": "testify.io",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T10:30:07.517Z",
+      "lastDiscoveredAt": "2026-05-22T10:30:07.517Z",
+      "createdAt": "2026-05-22T10:30:08.222Z",
+      "updatedAt": "2026-05-22T10:30:08.222Z",
+      "discoveries": [
+        {
+          "id": "42b3f56d-0624-4a3b-8a78-97a36d8f24cd",
+          "competitorId": "bc2bbde3-b574-4bb4-bddf-2344cd35ea8c",
+          "queryId": "ca3b5b9b-1671-40cb-926f-374fb8e9ad03",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "testify.io",
+          "discoveredAt": "2026-05-22T10:30:07.517Z",
+          "createdAt": "2026-05-22T10:30:08.453Z"
+        }
+      ]
+    },
+    {
+      "id": "952a10ba-47ef-4a98-9dbb-2d06f57379d6",
+      "normalizedDomain": "crobox.com",
+      "rawInput": "crobox.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T10:30:07.517Z",
+      "lastDiscoveredAt": "2026-05-22T10:30:07.517Z",
+      "createdAt": "2026-05-22T10:30:08.222Z",
+      "updatedAt": "2026-05-22T10:30:08.222Z",
+      "discoveries": [
+        {
+          "id": "aaacab0b-6fe0-48c0-a644-20a52ae6cecb",
+          "competitorId": "952a10ba-47ef-4a98-9dbb-2d06f57379d6",
+          "queryId": "ca3b5b9b-1671-40cb-926f-374fb8e9ad03",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "crobox.com",
+          "discoveredAt": "2026-05-22T10:30:07.517Z",
+          "createdAt": "2026-05-22T10:30:08.453Z"
+        }
+      ]
+    },
+    {
+      "id": "09d22ea7-b5ad-4ee8-95e0-99d2952c513f",
+      "normalizedDomain": "sentient.io",
+      "rawInput": "sentient.io",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "3d53e84e-cc4a-4f2b-9b33-814a3bd1e2a7",
+          "competitorId": "09d22ea7-b5ad-4ee8-95e0-99d2952c513f",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "sentient.io",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "ecda2bfe-0c91-415e-b3a6-f7af7348590e",
+      "normalizedDomain": "testomatic.com",
+      "rawInput": "testomatic.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "71b1ab16-9c83-4122-8835-0ebcb7bc9935",
+          "competitorId": "ecda2bfe-0c91-415e-b3a6-f7af7348590e",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "testomatic.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "219c5a54-f24c-475b-8b2f-b6fbb7248bbc",
+      "normalizedDomain": "ey.com",
+      "rawInput": "ey.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "977b0172-9aab-49da-a152-714df5fb1ef5",
+          "competitorId": "219c5a54-f24c-475b-8b2f-b6fbb7248bbc",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "ey.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "86d82d6c-81e3-46eb-be52-e3186724480d",
+      "normalizedDomain": "gignow.com",
+      "rawInput": "gignow.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "4e506268-845a-4d67-8f68-fc2aebbd383b",
+          "competitorId": "86d82d6c-81e3-46eb-be52-e3186724480d",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "gignow.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "406d0765-a787-462f-b17d-f977fa081b81",
+      "normalizedDomain": "login.ey.com",
+      "rawInput": "login.ey.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "b46f1c21-4baa-4182-b3f0-bd8c91d3b6b6",
+          "competitorId": "406d0765-a787-462f-b17d-f977fa081b81",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "login.ey.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "f726d913-8766-48e8-9fcb-d8bdb51d55f1",
+      "normalizedDomain": "studio.ey.com",
+      "rawInput": "studio.ey.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "99e2a750-515b-4166-add8-2f70c19e4e6e",
+          "competitorId": "f726d913-8766-48e8-9fcb-d8bdb51d55f1",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "studio.ey.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "68f46fc7-84ef-4630-b019-d57e759d9306",
+      "normalizedDomain": "onetrust.com",
+      "rawInput": "onetrust.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "6d3b25be-21ed-470d-ac1a-aa93d68cb748",
+          "competitorId": "68f46fc7-84ef-4630-b019-d57e759d9306",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "onetrust.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "3faf4add-6ba7-44b9-8729-85502e8ec0f7",
+      "normalizedDomain": "sortlist.be",
+      "rawInput": "sortlist.be",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "472be140-da29-4656-9255-6f0102cda25f",
+          "competitorId": "3faf4add-6ba7-44b9-8729-85502e8ec0f7",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.be",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "9ecb5236-bd07-44d7-8423-30ed59373030",
+      "normalizedDomain": "sortlist.fr",
+      "rawInput": "sortlist.fr",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "dfed9ea0-aa0b-40cc-88e5-6c4368046948",
+          "competitorId": "9ecb5236-bd07-44d7-8423-30ed59373030",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.fr",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "bc4e293d-7662-4f20-b6cd-14c1c6c640ba",
+      "normalizedDomain": "sortlist.de",
+      "rawInput": "sortlist.de",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "30aeae1b-a96a-4881-8f81-995b710727a2",
+          "competitorId": "bc4e293d-7662-4f20-b6cd-14c1c6c640ba",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.de",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "7a6b08b0-7b3d-4756-93ff-05dc585ceaea",
+      "normalizedDomain": "sortlist.it",
+      "rawInput": "sortlist.it",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "116cfcc5-67cf-4c83-8e9b-68cb2a928176",
+          "competitorId": "7a6b08b0-7b3d-4756-93ff-05dc585ceaea",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.it",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "b6e24f43-f645-496e-9e9b-f5b684fc4073",
+      "normalizedDomain": "sortlist.nl",
+      "rawInput": "sortlist.nl",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "9bb093c3-5cba-48b7-a1ce-44dbadeaed27",
+          "competitorId": "b6e24f43-f645-496e-9e9b-f5b684fc4073",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.nl",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "3884bb6d-4d7a-47e0-8b54-7b5e8be95d35",
+      "normalizedDomain": "sortlist.es",
+      "rawInput": "sortlist.es",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "37553e5b-3377-4a09-9af7-e18f65abaddd",
+          "competitorId": "3884bb6d-4d7a-47e0-8b54-7b5e8be95d35",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.es",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "edf1886d-d09a-43c4-86d6-f03b9d8e4c61",
+      "normalizedDomain": "sortlist.ch",
+      "rawInput": "sortlist.ch",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "1948329c-730d-46b3-9d07-2381aefafbed",
+          "competitorId": "edf1886d-d09a-43c4-86d6-f03b9d8e4c61",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.ch",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "58965350-e59e-4270-b5fa-b2dc43c35b14",
+      "normalizedDomain": "sortlist.co.uk",
+      "rawInput": "sortlist.co.uk",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "33c9dbdf-7986-4b37-83eb-d8840d0f0adf",
+          "competitorId": "58965350-e59e-4270-b5fa-b2dc43c35b14",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "sortlist.co.uk",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "a385bdfa-982c-4701-ab3e-abae0e71ed47",
+      "normalizedDomain": "share.google",
+      "rawInput": "share.google",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "d64a12fe-c021-443d-b149-f246c70312c2",
+          "competitorId": "a385bdfa-982c-4701-ab3e-abae0e71ed47",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "share.google",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "4824f07f-8f50-4b6f-9de6-64013d30178c",
+      "normalizedDomain": "project.clutch.co",
+      "rawInput": "project.clutch.co",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "d059c6a3-5541-4ea3-b4b1-071f91ac976b",
+          "competitorId": "4824f07f-8f50-4b6f-9de6-64013d30178c",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "project.clutch.co",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "25e7a96a-90e9-4be4-9cf6-026c1daf2fab",
+      "normalizedDomain": "r.clutch.co",
+      "rawInput": "r.clutch.co",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "c09b027f-6c1a-4508-a425-f97cbd55145d",
+          "competitorId": "25e7a96a-90e9-4be4-9cf6-026c1daf2fab",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "r.clutch.co",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "c73d8914-c14f-4586-a432-bf1bfad745c3",
+      "normalizedDomain": "pagetest.ai",
+      "rawInput": "pagetest.ai",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "07b42370-b99d-4097-9c26-64c067f9584d",
+          "competitorId": "c73d8914-c14f-4586-a432-bf1bfad745c3",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "pagetest.ai",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "806f6962-b61a-42db-8cb8-998ba340f629",
+      "normalizedDomain": "going.com",
+      "rawInput": "going.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "b2ef911d-ca65-414f-8973-142436da1d1d",
+          "competitorId": "806f6962-b61a-42db-8cb8-998ba340f629",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "going.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "3476384b-1849-4df5-ae0a-5487ff5873e1",
+      "normalizedDomain": "corporate.payu.com",
+      "rawInput": "corporate.payu.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "2237fefd-671d-489c-8124-ac8528793983",
+          "competitorId": "3476384b-1849-4df5-ae0a-5487ff5873e1",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "corporate.payu.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "caf5d731-3154-4a04-8a0e-a43f23f96b51",
+      "normalizedDomain": "intertop.com",
+      "rawInput": "intertop.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T11:03:57.221Z",
+      "lastDiscoveredAt": "2026-05-22T11:03:57.221Z",
+      "createdAt": "2026-05-22T11:03:58.076Z",
+      "updatedAt": "2026-05-22T11:03:58.076Z",
+      "discoveries": [
+        {
+          "id": "2b30f9d3-404e-4096-9792-b6261c6a816c",
+          "competitorId": "caf5d731-3154-4a04-8a0e-a43f23f96b51",
+          "queryId": "d6c8d403-8194-450d-9d09-6c766e0b37d8",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "intertop.com",
+          "discoveredAt": "2026-05-22T11:03:57.221Z",
+          "createdAt": "2026-05-22T11:03:58.310Z"
+        }
+      ]
+    },
+    {
+      "id": "f8fff0a8-8ded-41cc-a32d-35173fb109e5",
+      "normalizedDomain": "dynamicyield.com",
+      "rawInput": "dynamicyield.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "92a22a06-c300-460f-8905-9052ff2c2d5f",
+          "competitorId": "f8fff0a8-8ded-41cc-a32d-35173fb109e5",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "dynamicyield.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "ba8ae7ec-a6bd-44c8-a97a-e182a1786e9f",
+      "normalizedDomain": "maxymiser.com",
+      "rawInput": "maxymiser.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "d398a70e-7608-491d-abdf-f2a146d1014c",
+          "competitorId": "ba8ae7ec-a6bd-44c8-a97a-e182a1786e9f",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "maxymiser.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "a2afac0d-3e32-4347-829f-651a58a609a3",
+      "normalizedDomain": "qayma.io",
+      "rawInput": "qayma.io",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "77791abf-ffbb-48f7-9768-5b27c626246a",
+          "competitorId": "a2afac0d-3e32-4347-829f-651a58a609a3",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "qayma.io",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "2d1a0c53-e111-431c-98a6-89e3da22c3cb",
+      "normalizedDomain": "revenuejump.com",
+      "rawInput": "revenuejump.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "4b2a52ac-5e81-4d4c-92e4-11b8d71c4bdb",
+          "competitorId": "2d1a0c53-e111-431c-98a6-89e3da22c3cb",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "revenuejump.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "78d59197-0a3a-4097-925f-53ff752860d7",
+      "normalizedDomain": "mediamath.com",
+      "rawInput": "mediamath.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "5e303b0d-b4f5-48f6-90c8-9e5a858a1fe6",
+          "competitorId": "78d59197-0a3a-4097-925f-53ff752860d7",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "mediamath.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "4011b900-8daa-436f-9c99-c11d74d04f1b",
+      "normalizedDomain": "notbyai.fyi",
+      "rawInput": "notbyai.fyi",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "b3c1de9c-d2f9-4dcf-8c07-4ec5e4fde262",
+          "competitorId": "4011b900-8daa-436f-9c99-c11d74d04f1b",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "notbyai.fyi",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "1e75de47-d900-4a72-bd1f-8be356084917",
+      "normalizedDomain": "aimconversion.com",
+      "rawInput": "aimconversion.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "abe34bec-892c-4cb0-a35c-26f415c2b932",
+          "competitorId": "1e75de47-d900-4a72-bd1f-8be356084917",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "aimconversion.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "da05311a-4b0a-44e9-9087-940e8cb8e93c",
+      "normalizedDomain": "awa-digital.com",
+      "rawInput": "awa-digital.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "681235b8-6414-4c2a-a2bd-6c8ef5300fbe",
+          "competitorId": "da05311a-4b0a-44e9-9087-940e8cb8e93c",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "awa-digital.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "2c7e0a8a-48ce-4d5b-b602-c4a133bef592",
+      "normalizedDomain": "browsertobuyer.com",
+      "rawInput": "browsertobuyer.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "6400f895-3888-415d-847f-9e05eddb9129",
+          "competitorId": "2c7e0a8a-48ce-4d5b-b602-c4a133bef592",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "browsertobuyer.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "d23ebc46-079e-4915-9396-7fc8a4abb3b0",
+      "normalizedDomain": "thisisgain.com",
+      "rawInput": "thisisgain.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "db403dbf-60a8-41c8-b33e-001dd8999227",
+          "competitorId": "d23ebc46-079e-4915-9396-7fc8a4abb3b0",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "thisisgain.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "a7b3db84-3fae-4913-ad8f-ca5d61dc8b60",
+      "normalizedDomain": "conversionadvocates.com",
+      "rawInput": "conversionadvocates.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "989d8e70-7991-4342-a4cd-a9b91af72d4c",
+          "competitorId": "a7b3db84-3fae-4913-ad8f-ca5d61dc8b60",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversionadvocates.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "4f14562c-d5c2-4ee6-86b0-fc39c89ccbaf",
+      "normalizedDomain": "conversionratepros.co.za",
+      "rawInput": "conversionratepros.co.za",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "40fd7b58-8aa6-4a2d-b47d-185d808128ad",
+          "competitorId": "4f14562c-d5c2-4ee6-86b0-fc39c89ccbaf",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversionratepros.co.za",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "34684b41-20da-4886-a210-c8a1d1c8c377",
+      "normalizedDomain": "conversionwise.com",
+      "rawInput": "conversionwise.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "56851f12-9f07-44f7-b8b6-3def7c1451c5",
+          "competitorId": "34684b41-20da-4886-a210-c8a1d1c8c377",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "conversionwise.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "90711de8-c1b0-46d4-9289-940b97a4ba19",
+      "normalizedDomain": "echologyx.com",
+      "rawInput": "echologyx.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "dedb0a87-3c7a-4608-9edd-468290e4e7b1",
+          "competitorId": "90711de8-c1b0-46d4-9289-940b97a4ba19",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "echologyx.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "9d883cda-71fc-49b0-b78e-52c0fbe22864",
+      "normalizedDomain": "growthhit.com",
+      "rawInput": "growthhit.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "0a4c0af2-b992-475e-9bfe-38fce0cdac91",
+          "competitorId": "9d883cda-71fc-49b0-b78e-52c0fbe22864",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "growthhit.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "149a0a93-6009-4e32-98e3-d44db7150f2d",
+      "normalizedDomain": "journeyfurther.com",
+      "rawInput": "journeyfurther.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "90cc908a-6f1c-499c-87fe-508c2dbe625b",
+          "competitorId": "149a0a93-6009-4e32-98e3-d44db7150f2d",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "journeyfurther.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "159a5e61-01e1-4182-a78f-f987cc961817",
+      "normalizedDomain": "klientboost.com",
+      "rawInput": "klientboost.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "697ee527-5f46-42a1-a8bf-e394fe38820b",
+          "competitorId": "159a5e61-01e1-4182-a78f-f987cc961817",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "klientboost.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "bf8c5828-7fdc-465c-ad6d-197d10761b81",
+      "normalizedDomain": "leanconvert.com",
+      "rawInput": "leanconvert.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "2817eeb8-a261-4048-8523-38d129d22309",
+          "competitorId": "bf8c5828-7fdc-465c-ad6d-197d10761b81",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "leanconvert.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "2c4ce9a1-6220-4570-a406-736b3f3a9a4c",
+      "normalizedDomain": "monks.com",
+      "rawInput": "monks.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "a52b6c53-be67-4985-9a67-4077866a106d",
+          "competitorId": "2c4ce9a1-6220-4570-a406-736b3f3a9a4c",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "monks.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "888da45d-72c5-47f3-91e9-f3b0984619af",
+      "normalizedDomain": "onlinedialogue.com",
+      "rawInput": "onlinedialogue.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "8de4d4fc-0d41-4e61-af8c-c4f23344a149",
+          "competitorId": "888da45d-72c5-47f3-91e9-f3b0984619af",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "onlinedialogue.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "2860845e-40eb-49f9-b33a-762649967d74",
+      "normalizedDomain": "ontrack.agency",
+      "rawInput": "ontrack.agency",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "aba737cb-2def-47c5-8365-a3237c608492",
+          "competitorId": "2860845e-40eb-49f9-b33a-762649967d74",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "ontrack.agency",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "46b18f1f-79ef-447d-906c-9276236ad72b",
+      "normalizedDomain": "open.partners",
+      "rawInput": "open.partners",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "ed07fad2-9ef0-400e-9104-4b401cb17628",
+          "competitorId": "46b18f1f-79ef-447d-906c-9276236ad72b",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "open.partners",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "d1ece3a9-05df-409d-ab65-d9f08bf57d5a",
+      "normalizedDomain": "optiphoenix.com",
+      "rawInput": "optiphoenix.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "7368f27c-16de-4f3c-85d1-b07849cc4dde",
+          "competitorId": "d1ece3a9-05df-409d-ab65-d9f08bf57d5a",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "optiphoenix.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "5df5161c-3d09-4b9d-9c50-48a2b781d014",
+      "normalizedDomain": "outerboxdesign.com",
+      "rawInput": "outerboxdesign.com",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "931f5a85-f88d-454e-89ad-fd157efb27d2",
+          "competitorId": "5df5161c-3d09-4b9d-9c50-48a2b781d014",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "outerboxdesign.com",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    },
+    {
+      "id": "a9ab5e17-1601-4d0f-80e1-a6b66a7cbe96",
+      "normalizedDomain": "thatworks.agency",
+      "rawInput": "thatworks.agency",
+      "status": "DISCOVERED",
+      "discoverySource": "listicle-extraction",
+      "pipelineVersion": 1,
+      "discoveredAt": "2026-05-22T12:27:26.321Z",
+      "lastDiscoveredAt": "2026-05-22T12:27:26.321Z",
+      "createdAt": "2026-05-22T12:27:27.478Z",
+      "updatedAt": "2026-05-22T12:27:27.478Z",
+      "discoveries": [
+        {
+          "id": "fa9e3a5b-444e-4f43-9972-e009ab0cc441",
+          "competitorId": "a9ab5e17-1601-4d0f-80e1-a6b66a7cbe96",
+          "queryId": "6b172c69-849f-4d22-8312-3deef4923cfd",
+          "source": "listicle-extraction",
+          "discoveryMethod": "web-discovery",
+          "originalValue": "thatworks.agency",
+          "discoveredAt": "2026-05-22T12:27:26.321Z",
+          "createdAt": "2026-05-22T12:27:27.850Z"
+        }
+      ]
+    }
+  ]
+}

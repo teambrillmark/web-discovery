@@ -1,0 +1,380 @@
+{
+  "exportedAt": "2026-05-25T13:19:37.116Z",
+  "reason": "intelligence-reset: clearing pipelineVersion=1 (gen-1) data before gen-2 rebuild",
+  "stats": {
+    "competitorCount": 9,
+    "discoveryCount": 23,
+    "distinctRuns": 1,
+    "bySource": [
+      {
+        "discoverySource": "groq",
+        "pipelineVersion": 2,
+        "cnt": 9
+      }
+    ],
+    "byVersion": [
+      {
+        "pipelineVersion": 2,
+        "cnt": 9
+      }
+    ]
+  },
+  "competitors": [
+    {
+      "id": "8c5d1c07-0beb-4e0a-92ea-69784b1d8feb",
+      "normalizedDomain": "trademarkia.com",
+      "rawInput": "trademarkia.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:11.923Z",
+      "lastDiscoveredAt": "2026-05-25T13:17:55.121Z",
+      "createdAt": "2026-05-25T13:15:12.919Z",
+      "updatedAt": "2026-05-25T13:17:55.123Z",
+      "discoveries": [
+        {
+          "id": "bb982fec-b0f8-47a0-ad01-9f72c791c522",
+          "competitorId": "8c5d1c07-0beb-4e0a-92ea-69784b1d8feb",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkia.com",
+          "discoveredAt": "2026-05-25T13:15:11.923Z",
+          "createdAt": "2026-05-25T13:15:13.145Z"
+        },
+        {
+          "id": "b06152ce-b740-4774-9fc1-ed00867f3f5d",
+          "competitorId": "8c5d1c07-0beb-4e0a-92ea-69784b1d8feb",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkia.com",
+          "discoveredAt": "2026-05-25T13:15:53.353Z",
+          "createdAt": "2026-05-25T13:15:54.001Z"
+        },
+        {
+          "id": "ee04a375-e07e-43ad-bfaf-f2716cc5c801",
+          "competitorId": "8c5d1c07-0beb-4e0a-92ea-69784b1d8feb",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkia.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        },
+        {
+          "id": "a0dcf124-945a-405a-8e56-2657d93424a6",
+          "competitorId": "8c5d1c07-0beb-4e0a-92ea-69784b1d8feb",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkia.com",
+          "discoveredAt": "2026-05-25T13:17:54.799Z",
+          "createdAt": "2026-05-25T13:17:55.348Z"
+        }
+      ]
+    },
+    {
+      "id": "ea0b0cad-5231-4a65-8261-ce61e5c567f1",
+      "normalizedDomain": "trademarkplus.com",
+      "rawInput": "trademarkplus.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:11.923Z",
+      "lastDiscoveredAt": "2026-05-25T13:16:39.458Z",
+      "createdAt": "2026-05-25T13:15:12.919Z",
+      "updatedAt": "2026-05-25T13:16:39.460Z",
+      "discoveries": [
+        {
+          "id": "918cdb06-75d8-4fe8-bb3f-28975d95aca2",
+          "competitorId": "ea0b0cad-5231-4a65-8261-ce61e5c567f1",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkplus.com",
+          "discoveredAt": "2026-05-25T13:15:11.923Z",
+          "createdAt": "2026-05-25T13:15:13.145Z"
+        },
+        {
+          "id": "d6ee14e2-bcb7-4bef-9dc0-f78d2efacb33",
+          "competitorId": "ea0b0cad-5231-4a65-8261-ce61e5c567f1",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkplus.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        }
+      ]
+    },
+    {
+      "id": "e5dbf16b-52ef-4e55-ab9d-a3579873773f",
+      "normalizedDomain": "thetmstore.com",
+      "rawInput": "thetmstore.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:11.923Z",
+      "lastDiscoveredAt": "2026-05-25T13:16:39.458Z",
+      "createdAt": "2026-05-25T13:15:12.919Z",
+      "updatedAt": "2026-05-25T13:16:39.460Z",
+      "discoveries": [
+        {
+          "id": "e1b73cdd-9164-4064-8d0c-4966d76c262a",
+          "competitorId": "e5dbf16b-52ef-4e55-ab9d-a3579873773f",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "thetmstore.com",
+          "discoveredAt": "2026-05-25T13:15:11.923Z",
+          "createdAt": "2026-05-25T13:15:13.145Z"
+        },
+        {
+          "id": "5dc6fca7-5ea7-46d6-afaa-2af7dc59bc0c",
+          "competitorId": "e5dbf16b-52ef-4e55-ab9d-a3579873773f",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "thetmstore.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        }
+      ]
+    },
+    {
+      "id": "45680fab-f057-4db4-9d92-61a9b2ed65ec",
+      "normalizedDomain": "legalzoom.com",
+      "rawInput": "legalzoom.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:11.923Z",
+      "lastDiscoveredAt": "2026-05-25T13:17:55.121Z",
+      "createdAt": "2026-05-25T13:15:12.919Z",
+      "updatedAt": "2026-05-25T13:17:55.123Z",
+      "discoveries": [
+        {
+          "id": "953b2d9b-8b1d-41e8-b9fb-8dba3dee96f6",
+          "competitorId": "45680fab-f057-4db4-9d92-61a9b2ed65ec",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "legalzoom.com",
+          "discoveredAt": "2026-05-25T13:15:11.923Z",
+          "createdAt": "2026-05-25T13:15:13.145Z"
+        },
+        {
+          "id": "b7958524-d0a7-43df-b736-c59d8f621f82",
+          "competitorId": "45680fab-f057-4db4-9d92-61a9b2ed65ec",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "legalzoom.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        },
+        {
+          "id": "1155eacf-153a-4d68-8919-6b1c1a096292",
+          "competitorId": "45680fab-f057-4db4-9d92-61a9b2ed65ec",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "legalzoom.com",
+          "discoveredAt": "2026-05-25T13:17:54.799Z",
+          "createdAt": "2026-05-25T13:17:55.348Z"
+        }
+      ]
+    },
+    {
+      "id": "4f2e7e8b-846b-45fb-a3d8-5e448538f480",
+      "normalizedDomain": "trademarkengine.com",
+      "rawInput": "trademarkengine.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:11.923Z",
+      "lastDiscoveredAt": "2026-05-25T13:17:55.121Z",
+      "createdAt": "2026-05-25T13:15:12.919Z",
+      "updatedAt": "2026-05-25T13:17:55.123Z",
+      "discoveries": [
+        {
+          "id": "84a9ab42-92c3-416f-8356-27264b2169f3",
+          "competitorId": "4f2e7e8b-846b-45fb-a3d8-5e448538f480",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkengine.com",
+          "discoveredAt": "2026-05-25T13:15:11.923Z",
+          "createdAt": "2026-05-25T13:15:13.145Z"
+        },
+        {
+          "id": "862532f7-4b24-4ee0-9abc-61ebe3c42c8a",
+          "competitorId": "4f2e7e8b-846b-45fb-a3d8-5e448538f480",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkengine.com",
+          "discoveredAt": "2026-05-25T13:15:53.353Z",
+          "createdAt": "2026-05-25T13:15:54.001Z"
+        },
+        {
+          "id": "08462ba6-a3e4-4306-93ee-7ee0232fcbf9",
+          "competitorId": "4f2e7e8b-846b-45fb-a3d8-5e448538f480",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkengine.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        },
+        {
+          "id": "9bcbb728-570c-46bb-b680-0e1c08353334",
+          "competitorId": "4f2e7e8b-846b-45fb-a3d8-5e448538f480",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarkengine.com",
+          "discoveredAt": "2026-05-25T13:17:54.799Z",
+          "createdAt": "2026-05-25T13:17:55.348Z"
+        }
+      ]
+    },
+    {
+      "id": "0eaba472-bfc8-4c6e-a5cc-d12bd9eb47f4",
+      "normalizedDomain": "marksify.com",
+      "rawInput": "marksify.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:53.353Z",
+      "lastDiscoveredAt": "2026-05-25T13:17:55.121Z",
+      "createdAt": "2026-05-25T13:15:53.629Z",
+      "updatedAt": "2026-05-25T13:17:55.123Z",
+      "discoveries": [
+        {
+          "id": "0845ef4a-56bc-4e97-983b-5898815ee833",
+          "competitorId": "0eaba472-bfc8-4c6e-a5cc-d12bd9eb47f4",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "marksify.com",
+          "discoveredAt": "2026-05-25T13:15:53.353Z",
+          "createdAt": "2026-05-25T13:15:54.001Z"
+        },
+        {
+          "id": "541eaa73-61d7-4acc-bf60-26216259bd3e",
+          "competitorId": "0eaba472-bfc8-4c6e-a5cc-d12bd9eb47f4",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "marksify.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        },
+        {
+          "id": "5d1be4f4-d257-4396-87e6-50777c1021a8",
+          "competitorId": "0eaba472-bfc8-4c6e-a5cc-d12bd9eb47f4",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "marksify.com",
+          "discoveredAt": "2026-05-25T13:17:54.799Z",
+          "createdAt": "2026-05-25T13:17:55.348Z"
+        }
+      ]
+    },
+    {
+      "id": "2f63737e-17af-4d70-8684-088891e7cf38",
+      "normalizedDomain": "trademarknow.com",
+      "rawInput": "trademarknow.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:53.353Z",
+      "lastDiscoveredAt": "2026-05-25T13:17:55.121Z",
+      "createdAt": "2026-05-25T13:15:53.629Z",
+      "updatedAt": "2026-05-25T13:17:55.123Z",
+      "discoveries": [
+        {
+          "id": "165c39a1-e090-4822-9f75-6a1b9f5fc0aa",
+          "competitorId": "2f63737e-17af-4d70-8684-088891e7cf38",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarknow.com",
+          "discoveredAt": "2026-05-25T13:15:53.353Z",
+          "createdAt": "2026-05-25T13:15:54.001Z"
+        },
+        {
+          "id": "bc81dc60-1d5c-4ed3-9c9c-aa259710a88f",
+          "competitorId": "2f63737e-17af-4d70-8684-088891e7cf38",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarknow.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        },
+        {
+          "id": "b363497b-7505-4899-b188-ea9ab27bb27f",
+          "competitorId": "2f63737e-17af-4d70-8684-088891e7cf38",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "trademarknow.com",
+          "discoveredAt": "2026-05-25T13:17:54.799Z",
+          "createdAt": "2026-05-25T13:17:55.348Z"
+        }
+      ]
+    },
+    {
+      "id": "c1e4b638-010e-4be4-a004-a3fd02fbc50b",
+      "normalizedDomain": "cscglobal.com",
+      "rawInput": "cscglobal.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:15:53.353Z",
+      "lastDiscoveredAt": "2026-05-25T13:15:53.353Z",
+      "createdAt": "2026-05-25T13:15:53.629Z",
+      "updatedAt": "2026-05-25T13:15:53.629Z",
+      "discoveries": [
+        {
+          "id": "d3218e9a-843f-4b36-a3a2-18a8a47f95d0",
+          "competitorId": "c1e4b638-010e-4be4-a004-a3fd02fbc50b",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "cscglobal.com",
+          "discoveredAt": "2026-05-25T13:15:53.353Z",
+          "createdAt": "2026-05-25T13:15:54.001Z"
+        }
+      ]
+    },
+    {
+      "id": "6d59ad1f-f330-4dea-a50a-b534522e527f",
+      "normalizedDomain": "mytrademark.com",
+      "rawInput": "mytrademark.com",
+      "status": "DISCOVERED",
+      "discoverySource": "groq",
+      "pipelineVersion": 2,
+      "discoveredAt": "2026-05-25T13:16:38.952Z",
+      "lastDiscoveredAt": "2026-05-25T13:16:38.952Z",
+      "createdAt": "2026-05-25T13:16:39.312Z",
+      "updatedAt": "2026-05-25T13:16:39.312Z",
+      "discoveries": [
+        {
+          "id": "1e22ad88-4711-4b9d-a577-0b7bfdc151fb",
+          "competitorId": "6d59ad1f-f330-4dea-a50a-b534522e527f",
+          "queryId": "ea30d8de-d39e-4edb-a017-81af383e2464",
+          "source": "groq",
+          "discoveryMethod": "ai-discovery",
+          "originalValue": "mytrademark.com",
+          "discoveredAt": "2026-05-25T13:16:38.952Z",
+          "createdAt": "2026-05-25T13:16:39.682Z"
+        }
+      ]
+    }
+  ]
+}
