@@ -1,9 +1,11 @@
 import type { PrismaClient } from '@prisma/client';
 import type { Logger } from '../../../lib/logger';
-import type { StoredProfile } from '../types';
+import type { CompetitorProfile, StoredProfile } from '../types';
 
 export interface IProfileRepository {
   saveMany(profiles: StoredProfile[]): Promise<void>;
+  // Optional — implementations that back a DB can populate the profile cache.
+  findRecentByDomains?(domains: string[], maxAgeDays: number): Promise<Map<string, CompetitorProfile>>;
 }
 
 export class ProfileRepository implements IProfileRepository {
@@ -64,6 +66,55 @@ export class ProfileRepository implements IProfileRepository {
     } catch (err) {
       // Non-fatal — ranking still works; we just lose persistence for this run
       this.logger.error({ error: err, count: profiles.length }, 'ProfileRepository: save failed — ranking continues without persistence');
+    }
+  }
+
+  // Returns profiles saved in any recent run for the given domains.
+  // Only returns profiles with at least medium AI confidence (skips empty/fallback ones).
+  // Used by ProfilingService to avoid re-calling Groq for recently profiled competitors.
+  async findRecentByDomains(domains: string[], maxAgeDays: number): Promise<Map<string, CompetitorProfile>> {
+    if (domains.length === 0) return new Map();
+
+    const cutoff = new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000);
+
+    try {
+      const rows = await this.prisma.competitorProfile.findMany({
+        where: {
+          domain:      { in: domains },
+          aiConfidence: { in: ['high', 'medium'] },
+          createdAt:   { gte: cutoff },
+        },
+        orderBy: { createdAt: 'desc' },
+      });
+
+      // Keep only the most-recent profile per domain
+      const result = new Map<string, CompetitorProfile>();
+      for (const row of rows) {
+        if (!result.has(row.domain)) {
+          result.set(row.domain, {
+            domain:                     row.domain,
+            companyType:                row.companyType,
+            industry:                   row.industry,
+            niche:                      row.niche,
+            primaryCompetitiveIdentity: row.primaryCompetitiveIdentity,
+            primarySpecialties:         (row.primarySpecialties as string[]) ?? [],
+            coreServices:               (row.coreServices as string[]) ?? [],
+            targetAudience:             (row.targetAudience as string[]) ?? [],
+            positioning:                row.positioning,
+            aiConfidence:               row.aiConfidence as 'high' | 'medium' | 'low',
+          });
+        }
+      }
+
+      this.logger.debug(
+        { requested: domains.length, found: result.size, maxAgeDays },
+        'ProfileRepository: cache lookup complete',
+      );
+      return result;
+    } catch (err) {
+      // Non-fatal — caller falls back to fresh Groq extraction
+      this.logger.warn({ error: err }, 'ProfileRepository: cache lookup failed — will re-profile');
+      return new Map();
     }
   }
 }

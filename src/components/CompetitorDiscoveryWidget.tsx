@@ -93,6 +93,15 @@ interface ProfilingStats {
   mediumRelevance: number;
   lowRelevance: number;
   averageScore: number;
+  cacheHits?: number;
+  cacheMisses?: number;
+}
+
+interface FilterStats {
+  totalInput: number;
+  passed: number;
+  filtered: number;
+  filterRate: number;
 }
 
 interface DiscoveryOutput {
@@ -104,6 +113,7 @@ interface DiscoveryOutput {
   queryId: string;
   providersActive: string[];
   deduplicationStats: DeduplicationStats;
+  filterStats?: FilterStats;
   qualificationStats?: QualificationStats;
   profilingStats?: ProfilingStats;
 }
@@ -418,7 +428,7 @@ function DiscoveryResults({
   const [showAll, setShowAll] = useState(false);
 
   const { newCompetitors, existingCompetitors, deduplicationStats, providersActive,
-          qualificationStats, profilingStats, rankedCompetitors } = data;
+          filterStats, qualificationStats, profilingStats, rankedCompetitors } = data;
   const [showRejected, setShowRejected] = useState(false);
 
   const newDomains    = new Set(newCompetitors.map((c) => c.normalizedDomain));
@@ -447,6 +457,40 @@ function DiscoveryResults({
       {fieldRow(
         'Active providers',
         <span>{providersActive.map((p) => <span key={p} style={badgeStyle('blue')}>{p}</span>)}</span>,
+      )}
+
+      {/* Candidate filter stats — shown when the lightweight filter ran */}
+      {filterStats && filterStats.totalInput > 0 && (
+        <div style={{
+          margin: '12px 0', padding: '12px 14px', borderRadius: 8,
+          border: '1px solid #fde68a', background: '#fffbeb',
+        }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: '#b45309', marginBottom: 8 }}>
+            CANDIDATE FILTER
+          </div>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+            <StatChip label="DISCOVERED" value={filterStats.totalInput}  color="gray" />
+            <span style={{ fontSize: 16, color: '#d1d5db', fontWeight: 700 }}>→</span>
+            <StatChip label="FILTERED"   value={filterStats.filtered}    color="orange" />
+            <span style={{ fontSize: 16, color: '#d1d5db', fontWeight: 700 }}>→</span>
+            <StatChip label="ANALYSED"   value={filterStats.passed}      color="green" />
+          </div>
+          {filterStats.filtered > 0 && (
+            <div style={{ fontSize: 11, color: '#92400e' }}>
+              {filterStats.filterRate}% of candidates filtered before deep analysis
+              {(profilingStats?.cacheHits ?? 0) > 0 && (
+                <span style={{ marginLeft: 8 }}>
+                  · {profilingStats!.cacheHits} profile cache hit{profilingStats!.cacheHits !== 1 ? 's' : ''} (Groq skipped)
+                </span>
+              )}
+            </div>
+          )}
+          {filterStats.filtered === 0 && (
+            <div style={{ fontSize: 11, color: '#92400e' }}>
+              All candidates passed — no early filtering applied
+            </div>
+          )}
+        </div>
       )}
 
       {/* Qualification stats — shown when qualification ran */}

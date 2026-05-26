@@ -1,22 +1,31 @@
 // Profiling service — orchestrates the full profiling + ranking pipeline.
 //
 // Pipeline:
-//   1. Groq batch profiler — extracts a structured profile for each competitor
-//      from the LLM's world knowledge (ONE API call for the whole batch)
-//   2. Deterministic scorer — computes a 0–100 relevance score for each
+//   1. Profile cache check — queries competitor_profiles for recent profiles of the
+//      same domains (from any prior query). Cache hits skip the Groq call entirely.
+//   2. Groq batch profiler — extracts profiles for cache-miss domains only
+//      (ONE API call per batch of up to 20 domains)
+//   3. Deterministic scorer — computes a 0–100 relevance score for each
 //      competitor by comparing its profile against the target's profile
-//   3. Ranking — sorts by score descending, tie-broken by profile confidence
-//   4. Persistence — stores profiles + scores to competitor_profiles table
+//   4. Ranking — sorts by score descending, tie-broken by profile confidence
+//   5. Persistence — upserts profiles + scores to competitor_profiles table
 //
 // WHY separate profiling from qualification?
 //   Qualification answers "is this a competitor?" (binary)
 //   Profiling answers "how relevant a competitor?" (weighted 0–100)
 //   They use different AI prompts, different outputs, and serve different purposes.
 //
+// WHY cache profiles across queries?
+//   Well-known domains (optimizely.com, crobox.com) appear in many discovery runs.
+//   Re-profiling them every time wastes Groq tokens. A domain's competitive profile
+//   (what they do, who they serve) changes slowly — 7 days is a safe TTL.
+//
 // WHY not skip profiling when Groq is unavailable?
 //   We still run the scoring step — it just uses empty profiles, so all competitors
 //   score 0 and ranking is undefined. The response still includes a ranked list
 //   (all tied at 0) with `profilingSkipped: true` so the frontend can handle it.
+
+const PROFILE_CACHE_MAX_AGE_DAYS = 7;
 
 import type Groq from 'groq-sdk';
 import type { Logger } from '../../../lib/logger';
@@ -55,8 +64,26 @@ export class ProfilingService {
 
     const targetProfile = contextToProfile(targetContext);
 
-    // ── STEP 1: Extract competitor profiles via Groq ──────────────────────────
-    let competitorProfiles: CompetitorProfile[] = domains.map((domain) => ({
+    // ── STEP 1a: Profile cache lookup ─────────────────────────────────────────
+    // Reuse profiles from recent runs to avoid redundant Groq calls.
+    let cachedProfiles = new Map<string, CompetitorProfile>();
+    if (this.repo.findRecentByDomains) {
+      cachedProfiles = await this.repo.findRecentByDomains(domains, PROFILE_CACHE_MAX_AGE_DAYS);
+    }
+
+    const cacheMissDomains = domains.filter((d) => !cachedProfiles.has(d));
+    const cacheHits   = cachedProfiles.size;
+    const cacheMisses = cacheMissDomains.length;
+
+    if (cacheHits > 0) {
+      this.logger.info(
+        { queryId, cacheHits, cacheMisses, maxAgeDays: PROFILE_CACHE_MAX_AGE_DAYS },
+        'ProfilingService: profile cache hit — skipping Groq for cached domains',
+      );
+    }
+
+    // ── STEP 1b: Groq extraction for cache-miss domains only ─────────────────
+    let freshProfiles: CompetitorProfile[] = cacheMissDomains.map((domain) => ({
       domain,
       companyType:                null,
       industry:                   null,
@@ -71,19 +98,30 @@ export class ProfilingService {
 
     const profilingSkipped = !this.profiler;
 
-    if (this.profiler) {
+    if (this.profiler && cacheMissDomains.length > 0) {
       try {
-        competitorProfiles = await this.profiler.profileBatch(domains, targetContext, queryId);
+        freshProfiles = await this.profiler.profileBatch(cacheMissDomains, targetContext, queryId);
         this.logger.info(
-          { queryId, profilesExtracted: competitorProfiles.length },
-          'ProfilingService: profiles extracted',
+          { queryId, profilesExtracted: freshProfiles.length, cacheHits, cacheMisses },
+          'ProfilingService: fresh profiles extracted',
         );
       } catch (err) {
-        this.logger.error({ queryId, error: err }, 'ProfilingService: profiling failed — scoring with empty profiles');
+        this.logger.error({ queryId, error: err }, 'ProfilingService: profiling failed — scoring cache-miss domains with empty profiles');
       }
-    } else {
+    } else if (!this.profiler) {
       this.logger.warn({ queryId }, 'ProfilingService: Groq not configured — scoring with empty profiles, all scores will be 0');
     }
+
+    // Merge: cached profiles take priority (richer than empty fallbacks)
+    const competitorProfiles: CompetitorProfile[] = domains.map((domain) => {
+      return cachedProfiles.get(domain) ?? freshProfiles.find((p) => p.domain === domain) ?? {
+        domain,
+        companyType: null, industry: null, niche: null,
+        primaryCompetitiveIdentity: null,
+        primarySpecialties: [], coreServices: [], targetAudience: [],
+        positioning: null, aiConfidence: 'low' as const,
+      };
+    });
 
     // ── STEP 2: Deterministic scoring + ranking ───────────────────────────────
     const rankedCompetitors: ScoringResult[] = rankCompetitors(targetProfile, competitorProfiles);
@@ -153,16 +191,18 @@ export class ProfilingService {
 
     await this.repo.saveMany(recordsToSave);
 
-    const stats = buildStats(rankedCompetitors);
+    const stats = buildStats(rankedCompetitors, cacheHits, cacheMisses);
 
     this.logger.info(
       {
         queryId,
-        total:          stats.totalInput,
-        highRelevance:  stats.highRelevance,
+        total:           stats.totalInput,
+        highRelevance:   stats.highRelevance,
         mediumRelevance: stats.mediumRelevance,
-        lowRelevance:   stats.lowRelevance,
-        averageScore:   stats.averageScore,
+        lowRelevance:    stats.lowRelevance,
+        averageScore:    stats.averageScore,
+        cacheHits:       stats.cacheHits,
+        cacheMisses:     stats.cacheMisses,
       },
       'ProfilingService: complete',
     );
@@ -178,7 +218,7 @@ export class ProfilingService {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-function buildStats(ranked: ScoringResult[]): ProfilingStats {
+function buildStats(ranked: ScoringResult[], cacheHits = 0, cacheMisses = 0): ProfilingStats {
   const total = ranked.length;
   const highRelevance   = ranked.filter((r) => r.relevanceScore >= 70).length;
   const mediumRelevance = ranked.filter((r) => r.relevanceScore >= 40 && r.relevanceScore < 70).length;
@@ -187,7 +227,11 @@ function buildStats(ranked: ScoringResult[]): ProfilingStats {
     ? Math.round(ranked.reduce((sum, r) => sum + r.relevanceScore, 0) / total)
     : 0;
 
-  return { totalInput: total, profilesExtracted: total, highRelevance, mediumRelevance, lowRelevance, averageScore };
+  return {
+    totalInput: total, profilesExtracted: total,
+    highRelevance, mediumRelevance, lowRelevance, averageScore,
+    cacheHits, cacheMisses,
+  };
 }
 
 function emptyOutput(): ProfilingOutput {
@@ -198,6 +242,7 @@ function emptyOutput(): ProfilingOutput {
     profilingStats: {
       totalInput: 0, profilesExtracted: 0,
       highRelevance: 0, mediumRelevance: 0, lowRelevance: 0, averageScore: 0,
+      cacheHits: 0, cacheMisses: 0,
     },
   };
 }

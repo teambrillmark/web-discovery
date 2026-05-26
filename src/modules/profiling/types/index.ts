@@ -75,6 +75,9 @@ export interface ProfilingStats {
   mediumRelevance: number;  // score >= 40
   lowRelevance: number;     // score < 40
   averageScore: number;
+  // Profile cache metrics (populated when cache is active)
+  cacheHits: number;        // profiles reused from a previous run — no Groq call needed
+  cacheMisses: number;      // profiles freshly extracted via Groq
 }
 
 // ── Persisted record (mirrors DB shape for saves) ─────────────────────────────

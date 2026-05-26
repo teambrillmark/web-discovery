@@ -12,7 +12,8 @@ import { ResultCollectorService } from '@/modules/result-collector';
 import { DeduplicationEngineService, CompetitorDedupRepository } from '@/modules/deduplication';
 import { QualificationService, RejectedCandidateRepository } from '@/modules/qualification';
 import type { QualificationContext } from '@/modules/qualification';
-import { ProfilingService, ProfileRepository, type ProfilingTargetContext } from '@/modules/profiling';
+import { ProfilingService, ProfileRepository, CandidateFilter, type ProfilingTargetContext } from '@/modules/profiling';
+import type { CandidateFilterStats } from '@/modules/profiling';
 import { createLogger } from '@/lib/logger';
 import { getGroqClient, isGroqConfigured } from '@/lib/groq';
 import { getPrismaClient } from '@/lib/prisma';
@@ -47,6 +48,7 @@ const groqClient = isGroqConfigured() ? getGroqClient() : null;
 
 const qualificationService = new QualificationService(rejectedRepo, logger, groqClient);
 const profilingService     = new ProfilingService(profileRepo, logger, groqClient);
+const candidateFilter      = new CandidateFilter(logger);
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const requestId = req.headers.get('x-request-id') ?? undefined;
@@ -77,7 +79,41 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // ── Step 1: Discovery providers + result collection ────────────────────
     const discoveredCompetitors = await service.run(parsed.data);
 
-    const qualificationCandidates = discoveredCompetitors.map((c) => ({
+    // Build profilingContext early — needed by both the candidate filter and profiling.
+    const bctx = parsed.data.businessContext;
+    const profilingContext: ProfilingTargetContext | undefined = bctx
+      ? {
+          domain:                     parsed.data.normalizedDomain,
+          companyType:                bctx.companyType,
+          industry:                   bctx.industry,
+          niche:                      bctx.niche,
+          primaryCompetitiveIdentity: bctx.primaryCompetitiveIdentity ?? 'Unknown',
+          primarySpecialties:         bctx.primarySpecialties ?? [],
+          coreServices:               bctx.coreServices ?? [],
+          targetAudience:             bctx.targetAudience ?? [],
+          positioningSummary:         bctx.positioningSummary ?? '',
+          confidence:                 bctx.confidence,
+        }
+      : undefined;
+
+    // ── Step 1b: Lightweight candidate filter ─────────────────────────────
+    // Cheaply prunes noise (listicle-sourced domains with no semantic overlap)
+    // BEFORE qualification and profiling — saving AI calls on irrelevant candidates.
+    const filterResult = candidateFilter.filter(discoveredCompetitors, profilingContext);
+    const filterStats: CandidateFilterStats = filterResult.stats;
+
+    logger.info(
+      {
+        queryId:        parsed.data.queryId,
+        totalDiscovered: discoveredCompetitors.length,
+        passedFilter:   filterResult.passed.length,
+        filteredOut:    filterResult.filteredOut.length,
+        filterRate:     `${filterStats.filterRate}%`,
+      },
+      'Discovery: candidate filter applied',
+    );
+
+    const qualificationCandidates = filterResult.passed.map((c) => ({
       normalizedDomain: c.domain,
       originalValue:    c.domain,
       source:           c.source,
@@ -87,7 +123,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }));
 
     // ── Step 2: Qualification layer ────────────────────────────────────────
-    const bctx = parsed.data.businessContext;
     const qualificationContext: QualificationContext | undefined = bctx
       ? {
           primaryCompetitiveIdentity: bctx.primaryCompetitiveIdentity ?? 'Unknown',
@@ -120,24 +155,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // are returned unranked (score = 0, profilingSkipped = true).
     const acceptedDomains = qualificationResult.accepted.map((c) => c.normalizedDomain);
 
-    // Build ProfilingTargetContext from the incoming businessContext + normalizedDomain.
-    // The discovery validator's businessContext omits domain/queryId/analyzedAt, so we
-    // add domain here. The profiling module doesn't need the other metadata fields.
-    const profilingContext: ProfilingTargetContext | undefined = bctx
-      ? {
-          domain:                     parsed.data.normalizedDomain,
-          companyType:                bctx.companyType,
-          industry:                   bctx.industry,
-          niche:                      bctx.niche,
-          primaryCompetitiveIdentity: bctx.primaryCompetitiveIdentity ?? 'Unknown',
-          primarySpecialties:         bctx.primarySpecialties ?? [],
-          coreServices:               bctx.coreServices ?? [],
-          targetAudience:             bctx.targetAudience ?? [],
-          positioningSummary:         bctx.positioningSummary ?? '',
-          confidence:                 bctx.confidence,
-        }
-      : undefined;
-
     const profilingResult = profilingContext
       ? await profilingService.profile({
           domains:       acceptedDomains,
@@ -151,20 +168,25 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           profilingStats: {
             totalInput: acceptedDomains.length, profilesExtracted: 0,
             highRelevance: 0, mediumRelevance: 0, lowRelevance: 0, averageScore: 0,
+            cacheHits: 0, cacheMisses: 0,
           },
         };
 
     logger.info(
       {
         ...logCtx,
-        queryId:             parsed.data.queryId,
-        totalDiscovered:     discoveredCompetitors.length,
-        qualifiedAccepted:   qualificationResult.stats.accepted,
-        qualifiedRejected:   qualificationResult.stats.rejected,
-        newCompetitors:      deduplicationResult.stats.newCount,
-        existingCompetitors: deduplicationResult.stats.existingCount,
-        highRelevance:       profilingResult.profilingStats.highRelevance,
-        avgScore:            profilingResult.profilingStats.averageScore,
+        queryId:              parsed.data.queryId,
+        totalDiscovered:      discoveredCompetitors.length,
+        filteredOut:          filterStats.filtered,
+        passedFilter:         filterStats.passed,
+        qualifiedAccepted:    qualificationResult.stats.accepted,
+        qualifiedRejected:    qualificationResult.stats.rejected,
+        newCompetitors:       deduplicationResult.stats.newCount,
+        existingCompetitors:  deduplicationResult.stats.existingCount,
+        highRelevance:        profilingResult.profilingStats.highRelevance,
+        avgScore:             profilingResult.profilingStats.averageScore,
+        cacheHits:            profilingResult.profilingStats.cacheHits,
+        cacheMisses:          profilingResult.profilingStats.cacheMisses,
       },
       'Discovery pipeline complete',
     );
@@ -220,6 +242,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           queryId:             parsed.data.queryId,
           providersActive:     providers.map((p) => p.name),
           deduplicationStats:  deduplicationResult.stats,
+          filterStats,
           qualificationStats:  qualificationResult.stats,
           profilingStats:      profilingResult.profilingStats,
         },
