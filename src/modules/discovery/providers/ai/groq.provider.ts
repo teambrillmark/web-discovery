@@ -6,6 +6,7 @@ import { AICompetitorResponseSchema } from '../../validators/discovery.validator
 import { normalizeDomain, validateDomain } from '../../../../shared/domain';
 import { withRetry } from '../../utils/retry';
 import { buildDiscoveryPrompt } from './groq.prompt';
+import { ExclusionCompressor, type CompressedExclusions } from './exclusion.compressor';
 
 interface GroqProviderOptions {
   model?: string;
@@ -20,6 +21,7 @@ export class GroqAIProvider implements IDiscoveryProvider {
   private readonly model: string;
   private readonly maxRetries: number;
   private readonly retryDelayMs: number;
+  private readonly compressor: ExclusionCompressor;
 
   constructor(
     private readonly groq: Groq,
@@ -30,6 +32,7 @@ export class GroqAIProvider implements IDiscoveryProvider {
     this.model = options.model ?? 'llama-3.3-70b-versatile';
     this.maxRetries = options.maxRetries ?? 3;
     this.retryDelayMs = options.retryDelayMs ?? 1000;
+    this.compressor = new ExclusionCompressor(logger);
   }
 
   async discover(input: DiscoveryInput): Promise<ProviderResult[]> {
@@ -41,22 +44,32 @@ export class GroqAIProvider implements IDiscoveryProvider {
       ctx.primaryCompetitiveIdentity !== undefined &&
       ctx.primaryCompetitiveIdentity !== 'Unknown';
 
+    // ── Exclusion compression ─────────────────────────────────────────────────
+    // Replace raw domain dumping with semantic cluster summaries + limited hard exclusions.
+    // High-confidence competitors remain discoverable for reinforcement rediscovery.
+    const compressed = this.compressor.compress(
+      input.exclusions,
+      input.knownCompetitorProfiles ?? [],
+      input.normalizedDomain,
+    );
+
     this.logger.info(
       {
         ...logCtx,
-        excludedCount: input.exclusions.length,
+        totalExclusions:         input.exclusions.length,
+        profilesAvailable:       (input.knownCompetitorProfiles ?? []).length,
+        clusteredDomains:        compressed.stats.clusteredDomains,
+        hardExcluded:            compressed.stats.hardExcluded,
+        rediscoverable:          compressed.stats.rediscoverableCount,
+        estimatedTokenReduction: compressed.stats.estimatedTokenReduction,
         primaryCompetitiveIdentity: ctx?.primaryCompetitiveIdentity ?? 'none',
-        primarySpecialties: ctx?.primarySpecialties ?? [],
-        competitiveSurfaces: ctx?.competitiveSurfaces ?? [],
+        primarySpecialties:      ctx?.primarySpecialties ?? [],
         promptMode: usingIntentFields ? 'competitive-identity' : 'legacy-services',
-        influencedBy: usingIntentFields
-          ? ['primaryCompetitiveIdentity', 'primarySpecialties', 'competitiveSurfaces']
-          : ['industry', 'niche', 'services'],
       },
       'Groq AI discovery started',
     );
 
-    const prompt = buildDiscoveryPrompt(input.normalizedDomain, input.exclusions, input.businessContext);
+    const prompt = buildDiscoveryPrompt(input.normalizedDomain, compressed, input.businessContext);
     let rawContent: string;
 
     try {
@@ -72,7 +85,7 @@ export class GroqAIProvider implements IDiscoveryProvider {
       return [];
     }
 
-    const domains = this.parseAndValidate(rawContent, input);
+    const domains = this.parseAndValidate(rawContent, input, compressed);
     this.logger.info({ ...logCtx, discoveredCount: domains.length }, 'Groq AI discovery completed');
 
     return domains.map((domain) => ({
@@ -98,7 +111,11 @@ export class GroqAIProvider implements IDiscoveryProvider {
     return content;
   }
 
-  private parseAndValidate(rawContent: string, input: DiscoveryInput): string[] {
+  private parseAndValidate(
+    rawContent: string,
+    input: DiscoveryInput,
+    compressed: CompressedExclusions,
+  ): string[] {
     const logCtx = { queryId: input.queryId };
     let parsed: unknown;
 
@@ -115,18 +132,21 @@ export class GroqAIProvider implements IDiscoveryProvider {
       return [];
     }
 
-    // Normalize the input domain using the canonical function for consistent comparison.
     const inputNorm = normalizeDomain(input.normalizedDomain);
     const inputDomain = inputNorm.ok ? inputNorm.domain : input.normalizedDomain;
 
-    // Build exclusion set with canonical normalization — matches what is stored in DB.
-    const exclusionSet = new Set<string>();
-    for (const excl of input.exclusions) {
+    // Only hard-exclude low-confidence / unclassified domains.
+    // High/medium confidence domains (described semantically in the prompt) can be
+    // rediscovered — this is intentional. Repeated discovery reinforces relevance.
+    const hardExclusionSet = new Set<string>();
+    for (const excl of compressed.hardExclusions) {
       const outcome = normalizeDomain(excl);
-      if (outcome.ok) exclusionSet.add(outcome.domain);
+      if (outcome.ok) hardExclusionSet.add(outcome.domain);
     }
 
     const valid: string[] = [];
+    const rediscovered: string[] = [];
+
     for (const raw of result.data.competitors) {
       const normOutcome = normalizeDomain(raw);
       if (!normOutcome.ok) continue;
@@ -136,9 +156,21 @@ export class GroqAIProvider implements IDiscoveryProvider {
 
       const domain = normOutcome.domain;
       if (domain === inputDomain) continue;
-      if (exclusionSet.has(domain)) continue;
+      if (hardExclusionSet.has(domain)) continue;
+
+      // Track rediscovered known competitors for logging
+      if (input.exclusions.includes(domain) && !hardExclusionSet.has(domain)) {
+        rediscovered.push(domain);
+      }
 
       valid.push(domain);
+    }
+
+    if (rediscovered.length > 0) {
+      this.logger.info(
+        { queryId: input.queryId, rediscovered, count: rediscovered.length },
+        'Groq AI discovery: high-confidence competitors rediscovered — reinforcing relevance',
+      );
     }
 
     return valid;

@@ -1,6 +1,6 @@
 import type { PrismaClient } from '@prisma/client';
 import type { Logger } from '../../../lib/logger';
-import type { CompetitorProfile, StoredProfile } from '../types';
+import type { BusinessModel, BusinessModelConfidence, CompetitorProfile, StoredProfile } from '../types';
 
 export interface IProfileRepository {
   saveMany(profiles: StoredProfile[]): Promise<void>;
@@ -40,6 +40,8 @@ export class ProfileRepository implements IProfileRepository {
           scoreConfidence:            p.scoreConfidence,
           matchedSignals:             p.matchedSignals as object,
           scoringReasoning:           p.scoringReasoning,
+          businessModel:              p.businessModel,
+          businessModelConfidence:    p.businessModelConfidence as object,
         },
         update: {
           companyType:                p.companyType,
@@ -55,6 +57,8 @@ export class ProfileRepository implements IProfileRepository {
           scoreConfidence:            p.scoreConfidence,
           matchedSignals:             p.matchedSignals as object,
           scoringReasoning:           p.scoringReasoning,
+          businessModel:              p.businessModel,
+          businessModelConfidence:    p.businessModelConfidence as object,
         },
       }),
     );
@@ -102,6 +106,9 @@ export class ProfileRepository implements IProfileRepository {
             targetAudience:             (row.targetAudience as string[]) ?? [],
             positioning:                row.positioning,
             aiConfidence:               row.aiConfidence as 'high' | 'medium' | 'low',
+            // Persisted taxonomy — reused on cache hit so scorer skips redundant reclassification
+            businessModel:              (row.businessModel as BusinessModel | null) ?? null,
+            businessModelConfidence:    (row.businessModelConfidence as BusinessModelConfidence | null) ?? undefined,
           });
         }
       }

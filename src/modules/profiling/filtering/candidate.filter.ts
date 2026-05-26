@@ -43,6 +43,7 @@
 import type { Logger } from '../../../lib/logger';
 import type { ProfilingTargetContext } from '../types';
 import { tokenize, normalizeText } from '../scoring/comparator';
+import { mapToSemanticGroups, getGroupAcronyms, DEFAULT_ONTOLOGY } from '../../../semantic/ontology';
 
 // ── Input / output types ─────────────────────────────────────────────────────
 
@@ -87,10 +88,10 @@ const SOURCE_SCORE: Record<string, number> = {
   'listicle-extraction':    5,  // below threshold alone — needs keyword corroboration
 };
 
-// 3-char industry acronyms commonly embedded in domain names (e.g. "invespcro").
-// These are specific enough to be meaningful even as substrings; unlike "test"
-// (which matches QA companies), "cro" / "seo" / "ppc" unambiguously signal niche.
-const INDUSTRY_ACRONYMS = new Set(['cro', 'seo', 'ppc', 'cta', 'ux', 'cx', 'mvt', 'abt']);
+// Fallback acronyms used when no target context is available.
+// Derived from the ontology for common competitive intelligence groups.
+const DEFAULT_ACRONYM_GROUPS = ['EXPERIMENTATION', 'CRO', 'UX_RESEARCH', 'SEO', 'PPC_SEM', 'ANALYTICS', 'MARTECH'];
+const FALLBACK_ACRONYMS = new Set(getGroupAcronyms(DEFAULT_ACRONYM_GROUPS, DEFAULT_ONTOLOGY));
 
 // ── CandidateFilter ──────────────────────────────────────────────────────────
 
@@ -213,6 +214,16 @@ function scoreCandidate(candidate: FilterCandidate, keywords: string[]): number 
 function extractDomainKeywords(ctx: ProfilingTargetContext): string[] {
   const kws = new Set<string>();
 
+  // Derive acronyms dynamically from the target's ontology groups.
+  // e.g. an Experimentation agency gets ['abt', 'mvt', 'cro'] (CRO is closely related).
+  const targetGroups = mapToSemanticGroups(
+    [...(ctx.primarySpecialties ?? []), ctx.primaryCompetitiveIdentity ?? ''],
+    DEFAULT_ONTOLOGY,
+  );
+  const ontologyAcronyms = targetGroups.length > 0
+    ? new Set(getGroupAcronyms(targetGroups, DEFAULT_ONTOLOGY, 0.5))  // include related groups ≥0.5
+    : FALLBACK_ACRONYMS;
+
   // Primary semantic fields — the strongest signal for what the target competes on.
   const semanticFields = [
     ...(ctx.primarySpecialties ?? []),
@@ -222,7 +233,7 @@ function extractDomainKeywords(ctx: ProfilingTargetContext): string[] {
 
   for (const field of semanticFields) {
     // Canonical tokens (post-normalization): e.g. "Experimentation" → "abtesting"
-    // Min 4 chars — short canonical tokens like "ux" are handled via INDUSTRY_ACRONYMS.
+    // Min 4 chars — short canonical tokens like "ux" are handled via ontologyAcronyms.
     for (const t of tokenize(normalizeText(field))) {
       if (t.length >= 4) kws.add(t);
     }
@@ -232,8 +243,8 @@ function extractDomainKeywords(ctx: ProfilingTargetContext): string[] {
     for (const t of tokenize(field)) {
       if (t.length >= 5) kws.add(t);
 
-      // Short industry acronyms: specific enough to be used even as substring matches.
-      if (INDUSTRY_ACRONYMS.has(t)) kws.add(t);
+      // Ontology-derived acronyms: specific enough to be used even as substring matches.
+      if (ontologyAcronyms.has(t)) kws.add(t);
     }
   }
 
@@ -241,7 +252,7 @@ function extractDomainKeywords(ctx: ProfilingTargetContext): string[] {
   for (const svc of ctx.coreServices ?? []) {
     for (const t of tokenize(svc)) {
       if (t.length >= 5) kws.add(t);
-      if (INDUSTRY_ACRONYMS.has(t)) kws.add(t);
+      if (ontologyAcronyms.has(t)) kws.add(t);
     }
   }
 

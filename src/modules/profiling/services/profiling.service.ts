@@ -149,12 +149,22 @@ export class ProfilingService {
           completeness:     Math.round(completeness * 100),
           reasoning:        result.scoringReasoning,
           normalizations:   normalizations.length > 0 ? normalizations : undefined,
-          signals: {
-            specialty:    result.matchedSignals.specialtyOverlap,
-            identity:     result.matchedSignals.identitySimilarity,
-            businessType: result.matchedSignals.businessTypeMatch,
-            industry:     result.matchedSignals.industryMatch,
-            audience:     result.matchedSignals.audienceOverlap,
+          // Taxonomy observability: raw AI string → normalized model + confidence
+          taxonomy: {
+            rawCompanyType:          result.profile.companyType,
+            businessModel:           result.businessModel,
+            topConfidence:           Math.round((result.businessModelConfidence[result.businessModel] ?? 0) * 100),
+            competitiveRelationship: result.matchedSignals.competitiveRelationship,
+            competitiveDistance:     result.matchedSignals.competitiveDistance,
+          },
+          // Score contribution breakdown — points from each weight slot
+          contributions: {
+            specialty:     Math.round(result.scoreContributions.specialty),
+            identity:      Math.round(result.scoreContributions.identity),
+            businessModel: Math.round(result.scoreContributions.businessModel),
+            industry:      Math.round(result.scoreContributions.industry),
+            audience:      Math.round(result.scoreContributions.audience),
+            service:       Math.round(result.scoreContributions.service),
           },
         },
         'ProfilingService: ranked competitor',
@@ -187,6 +197,8 @@ export class ProfilingService {
       scoreConfidence:            r.scoreConfidence,
       matchedSignals:             r.matchedSignals,
       scoringReasoning:           r.scoringReasoning,
+      businessModel:              r.businessModel,
+      businessModelConfidence:    r.businessModelConfidence,
     }));
 
     await this.repo.saveMany(recordsToSave);

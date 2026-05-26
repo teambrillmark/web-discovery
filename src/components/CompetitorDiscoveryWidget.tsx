@@ -62,9 +62,15 @@ interface MatchedSignals {
   audienceOverlap: number;
   serviceOverlap: number;
   identitySimilarity: number;
+  competitiveRelationship?: 'direct' | 'adjacent' | 'peripheral';
+  competitiveDistance?: number;
 }
 
 interface CompetitorProfileSummary {
+  // Authoritative normalized taxonomy (from semantic/taxonomy.ts)
+  businessModel: string | null;
+  businessModelConfidence?: Record<string, number>;
+  // Raw AI string — kept for observability in expanded detail
   companyType: string | null;
   industry: string | null;
   niche: string | null;
@@ -307,7 +313,9 @@ function RankedCompetitorCard({ rank, competitor, isNew }: {
           )}
         </div>
         {isNew && <span style={badgeStyle('green')}>NEW</span>}
-        {profile.companyType && <span style={badgeStyle('gray')}>{profile.companyType}</span>}
+        {(profile.businessModel ?? profile.companyType) && (
+          <span style={badgeStyle('gray')}>{profile.businessModel ?? profile.companyType}</span>
+        )}
         <ScoreBadge score={competitor.relevanceScore} confidence={competitor.scoreConfidence} />
         <span style={{ fontSize: 14, color: '#9ca3af', marginLeft: 4 }}>{expanded ? '▾' : '▸'}</span>
       </div>
@@ -319,6 +327,12 @@ function RankedCompetitorCard({ rank, competitor, isNew }: {
           {profile.primaryCompetitiveIdentity && (
             <div style={{ fontSize: 12, color: '#7e22ce', fontWeight: 600, marginBottom: 6 }}>
               {profile.primaryCompetitiveIdentity}
+            </div>
+          )}
+          {/* Raw AI companyType — shown for observability when it differs from the normalized businessModel */}
+          {profile.companyType && profile.businessModel && profile.companyType !== profile.businessModel && (
+            <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 6, fontFamily: 'monospace' }}>
+              AI type: {profile.companyType}
             </div>
           )}
           {profile.primarySpecialties.length > 0 && (
@@ -352,9 +366,19 @@ function RankedCompetitorCard({ rank, competitor, isNew }: {
                 audience {Math.round(matchedSignals.audienceOverlap * 100)}%
               </span>
             )}
-            {matchedSignals.businessTypeMatch && (
+            {matchedSignals.competitiveRelationship ? (
+              <span style={{
+                ...badgeStyle(
+                  matchedSignals.competitiveRelationship === 'direct' ? 'green' :
+                  matchedSignals.competitiveRelationship === 'adjacent' ? 'orange' : 'gray'
+                ),
+                fontSize: 10,
+              }}>
+                {matchedSignals.competitiveRelationship}
+              </span>
+            ) : matchedSignals.businessTypeMatch ? (
               <span style={{ ...badgeStyle('green'), fontSize: 10 }}>type ✓</span>
-            )}
+            ) : null}
             {matchedSignals.industryMatch && (
               <span style={{ ...badgeStyle('green'), fontSize: 10 }}>industry ✓</span>
             )}

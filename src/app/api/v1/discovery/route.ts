@@ -14,6 +14,7 @@ import { QualificationService, RejectedCandidateRepository } from '@/modules/qua
 import type { QualificationContext } from '@/modules/qualification';
 import { ProfilingService, ProfileRepository, CandidateFilter, type ProfilingTargetContext } from '@/modules/profiling';
 import type { CandidateFilterStats } from '@/modules/profiling';
+import type { KnownCompetitorSummary, DiscoveryInput } from '@/modules/discovery/types';
 import { createLogger } from '@/lib/logger';
 import { getGroqClient, isGroqConfigured } from '@/lib/groq';
 import { getPrismaClient } from '@/lib/prisma';
@@ -77,7 +78,39 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   try {
     // ── Step 1: Discovery providers + result collection ────────────────────
-    const discoveredCompetitors = await service.run(parsed.data);
+    // Load stored profiles for all known exclusions so GroqAIProvider can
+    // compress them semantically rather than dumping raw domain lists.
+    const exclusionProfileMap = await profileRepo.findRecentByDomains(
+      parsed.data.exclusions ?? [],
+      30,  // 30-day window for exclusion semantic context
+    );
+    const knownCompetitorProfiles: KnownCompetitorSummary[] = [...exclusionProfileMap.entries()].map(
+      ([domain, p]) => ({
+        domain,
+        primaryCompetitiveIdentity: p.primaryCompetitiveIdentity,
+        companyType:                p.companyType,
+        aiConfidence:               p.aiConfidence,
+      }),
+    );
+
+    logger.info(
+      {
+        queryId:            parsed.data.queryId,
+        totalExclusions:    parsed.data.exclusions.length,
+        profilesLoaded:     knownCompetitorProfiles.length,
+        profileCoverage:    parsed.data.exclusions.length > 0
+          ? `${Math.round((knownCompetitorProfiles.length / parsed.data.exclusions.length) * 100)}%`
+          : '0%',
+      },
+      'Discovery: exclusion profiles loaded for semantic compression',
+    );
+
+    const discoveryInput: DiscoveryInput = {
+      ...parsed.data,
+      knownCompetitorProfiles,
+    };
+
+    const discoveredCompetitors = await service.run(discoveryInput);
 
     // Build profilingContext early — needed by both the candidate filter and profiling.
     const bctx = parsed.data.businessContext;
@@ -218,6 +251,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
               matchedSignals:   r.matchedSignals,
               scoringReasoning: r.scoringReasoning,
               profile: {
+                // Authoritative normalized taxonomy — UI and analytics should use this
+                businessModel:              r.businessModel,
+                businessModelConfidence:    r.businessModelConfidence,
+                // Raw AI string — kept for observability/debugging
                 companyType:                r.profile.companyType,
                 industry:                   r.profile.industry,
                 niche:                      r.profile.niche,

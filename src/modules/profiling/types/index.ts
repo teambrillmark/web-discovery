@@ -1,4 +1,7 @@
 import type { BusinessContext } from '../../context-extractor/types';
+import type { BusinessModel, BusinessModelConfidence, CompetitiveRelationship } from '../../../semantic/taxonomy';
+
+export type { BusinessModel, BusinessModelConfidence, CompetitiveRelationship };
 
 // ── Profiling target context ──────────────────────────────────────────────────
 // Subset of BusinessContext used by the profiling module.
@@ -31,6 +34,10 @@ export interface CompetitorProfile {
   targetAudience: string[];
   positioning: string | null;
   aiConfidence: 'high' | 'medium' | 'low';
+  // Authoritative taxonomy — populated when loaded from DB cache.
+  // Absent on freshly AI-extracted profiles; scorer always recomputes and persists.
+  businessModel?: BusinessModel | null;
+  businessModelConfidence?: Partial<BusinessModelConfidence>;
 }
 
 // ── Scoring signals (deterministic output) ────────────────────────────────────
@@ -42,6 +49,23 @@ export interface MatchedSignals {
   audienceOverlap: number;     // 0–1 Jaccard similarity
   serviceOverlap: number;      // 0–1 Jaccard similarity
   identitySimilarity: number;  // 0–1 token overlap
+  // Semantic layer — optional enrichment from the ontology/taxonomy
+  semanticGroups?: string[];          // ontology group IDs matched for the competitor
+  taxonomyAlignment?: number;         // 0–1 blended taxonomy alignment (observability)
+  // Competitive distance layer
+  competitiveDistance?: number;       // 0–1 pure business-model-to-business-model proximity
+  competitiveRelationship?: CompetitiveRelationship;  // direct / adjacent / peripheral
+}
+
+// Per-signal point contributions — shows exactly how each weight slot contributed.
+// Populated by scorer, logged in profiling service, not exposed in API response.
+export interface ScoreContributions {
+  specialty:     number;  // semanticOverlap * WEIGHTS.specialtyOverlap
+  identity:      number;  // identitySimilarity * WEIGHTS.identitySimilarity
+  businessModel: number;  // competitiveDistance * WEIGHTS.businessTypeMatch
+  industry:      number;  // industryMatch * WEIGHTS.industryMatch
+  audience:      number;  // audienceOverlap * WEIGHTS.audienceOverlap
+  service:       number;  // serviceOverlap * WEIGHTS.serviceOverlap
 }
 
 export interface ScoringResult {
@@ -51,6 +75,11 @@ export interface ScoringResult {
   scoreConfidence: 'high' | 'medium' | 'low';
   matchedSignals: MatchedSignals;
   scoringReasoning: string[];
+  // Authoritative normalized taxonomy — always populated by scorer.
+  businessModel: BusinessModel;
+  businessModelConfidence: BusinessModelConfidence;
+  // Score contribution breakdown — used for observability logging.
+  scoreContributions: ScoreContributions;
 }
 
 // ── Service inputs/outputs ────────────────────────────────────────────────────
@@ -98,6 +127,8 @@ export interface StoredProfile {
   scoreConfidence: string;
   matchedSignals: MatchedSignals;
   scoringReasoning: string[];
+  businessModel: BusinessModel | null;
+  businessModelConfidence: BusinessModelConfidence;
 }
 
 // ── Adapter: converts ProfilingTargetContext into a CompetitorProfile shape ───

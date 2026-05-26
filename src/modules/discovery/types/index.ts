@@ -19,11 +19,23 @@ export interface BusinessContext {
   confidence: 'high' | 'medium' | 'low';
 }
 
+// Minimal profile shape passed server-side into DiscoveryInput for exclusion compression.
+// Defined here (not imported from profiling) to avoid a cross-module dependency.
+export interface KnownCompetitorSummary {
+  domain: string;
+  primaryCompetitiveIdentity: string | null;
+  companyType: string | null;
+  aiConfidence: 'high' | 'medium' | 'low';
+}
+
 export interface DiscoveryInput {
   normalizedDomain: string;
   exclusions: string[];
   queryId: string;
   businessContext?: BusinessContext;
+  // Optional — added server-side by the route after loading DB profiles.
+  // Used by GroqAIProvider to compress exclusions semantically instead of dumping raw domains.
+  knownCompetitorProfiles?: KnownCompetitorSummary[];
 }
 
 export interface ProviderResult {

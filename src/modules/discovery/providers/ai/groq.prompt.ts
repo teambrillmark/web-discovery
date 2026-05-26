@@ -9,28 +9,30 @@
 // company COMPETES ON, not what it happens to offer. By anchoring the discovery
 // prompt to these fields, the LLM stays focused on the correct competitor segment.
 //
-// secondaryCapabilities are explicitly excluded from the framing to prevent drift
-// into adjacent markets.
+// WHY semantic exclusion compression instead of raw domain list?
+//   Raw list: "exclude domain1.com, domain2.com … domain120.com" = ~600 tokens,
+//   zero semantic context, no exploration guidance, hard-excludes strong competitors.
+//   Compressed: cluster summaries + 15 hard-exclusions + exploration guidance = ~150 tokens,
+//   tells the LLM WHERE it has already looked and WHERE to explore next.
+//
+// WHY allow high-confidence rediscovery?
+//   Repeated surfacing of strong competitors validates their relevance classification.
+//   Only weak/unclassified domains are hard-excluded — they're the real noise.
 
 import type { BusinessContext } from '../../types';
-
-const MAX_EXCLUSIONS_IN_PROMPT = 50;
+import type { CompressedExclusions } from './exclusion.compressor';
 
 export function buildDiscoveryPrompt(
   domain: string,
-  exclusions: string[],
+  compressed: CompressedExclusions,
   businessContext?: BusinessContext,
 ): string {
-  const truncated = exclusions.slice(0, MAX_EXCLUSIONS_IN_PROMPT);
-
-  const exclusionBlock =
-    truncated.length > 0
-      ? `Known competitors to EXCLUDE — do NOT include these in your response:\n${truncated.map((e) => `- ${e}`).join('\n')}`
-      : 'No exclusions.';
-
   const contextBlock = businessContext
     ? buildContextBlock(businessContext)
     : `BUSINESS CONTEXT: Not available. Infer what the company does from the domain name alone.`;
+
+  const exclusionBlock = buildExclusionBlock(compressed, businessContext);
+  const explorationBlock = buildExplorationBlock(compressed, businessContext);
 
   return `You are a senior competitive intelligence analyst.
 
@@ -47,12 +49,13 @@ Using the context above, identify companies that:
 
 ${exclusionBlock}
 
+${explorationBlock}
+
 STRICT RULES:
 - Return ONLY real, existing competitor domains
 - Return ONLY root domains (no paths, no protocols)
 - No descriptions or explanations
 - Do NOT include ${domain} itself
-- Do NOT include excluded domains
 - Focus on PRIMARY identity competitors — do NOT drift into secondary/supporting service spaces
 - Prefer direct competitors over tangential ones
 
@@ -69,6 +72,119 @@ Respond ONLY with valid JSON in this exact format:
 `;
 }
 
+// ── Exclusion block ───────────────────────────────────────────────────────────
+
+function buildExclusionBlock(compressed: CompressedExclusions, ctx?: BusinessContext): string {
+  const lines: string[] = [];
+
+  if (compressed.totalExcluded === 0) {
+    lines.push('DISCOVERY MEMORY: No prior competitors on record — full exploration mode.');
+    return lines.join('\n');
+  }
+
+  lines.push(`DISCOVERY MEMORY — ${compressed.totalExcluded} competitors already in database:`);
+
+  if (compressed.clusters.length > 0) {
+    lines.push('');
+    lines.push('Competitor segments already well-covered:');
+    for (const cluster of compressed.clusters) {
+      const exampleStr = cluster.examples.length > 0
+        ? ` (e.g. ${cluster.examples.join(', ')})`
+        : '';
+      lines.push(`  - ${cluster.label}: ${cluster.count} known${exampleStr}`);
+    }
+    lines.push('');
+    if (compressed.stats.rediscoverableCount > 0) {
+      lines.push(
+        `Note: ${compressed.stats.rediscoverableCount} high-confidence competitors from these segments ` +
+        `remain discoverable — you MAY still return strong direct competitors even from covered segments ` +
+        `if they are highly relevant. The goal is exploration diversity, not total exclusion.`,
+      );
+      lines.push('');
+    }
+  }
+
+  if (compressed.hardExclusions.length > 0) {
+    lines.push(`Do NOT return these specific domains under any circumstances:`);
+    for (const d of compressed.hardExclusions) {
+      lines.push(`  - ${d}`);
+    }
+    const unlistedCount = compressed.stats.totalExclusions
+      - compressed.stats.clusteredDomains
+      - compressed.hardExclusions.length;
+    if (unlistedCount > 0) {
+      lines.push(`  (+ ${unlistedCount} additional low-value domains suppressed)`);
+    }
+  } else if (compressed.clusters.length > 0) {
+    lines.push('No explicit domain exclusions — focus on exploration and diversity.');
+  }
+
+  // Surface context to guide away from secondary identity anchor (Shopify, etc.)
+  if (ctx?.secondaryCapabilities && ctx.secondaryCapabilities.length > 0) {
+    lines.push('');
+    lines.push(
+      `IMPORTANT: Do NOT anchor discovery to secondary capabilities ` +
+      `(${ctx.secondaryCapabilities.slice(0, 3).join(', ')}). ` +
+      `These are supporting services, not the primary competitive identity.`,
+    );
+  }
+
+  return lines.join('\n');
+}
+
+// ── Exploration guidance ──────────────────────────────────────────────────────
+
+function buildExplorationBlock(compressed: CompressedExclusions, ctx?: BusinessContext): string {
+  const focusAreas = buildExplorationFocus(compressed, ctx);
+
+  if (focusAreas.length === 0) return '';
+
+  const lines = [
+    'EXPLORATION FOCUS — prioritize discovering competitors in these under-explored areas:',
+    ...focusAreas.map((f) => `  - ${f}`),
+  ];
+
+  return lines.join('\n');
+}
+
+function buildExplorationFocus(
+  compressed: CompressedExclusions,
+  ctx?: BusinessContext,
+): string[] {
+  if (!ctx) return [];
+
+  const identity = ctx.primaryCompetitiveIdentity;
+  const hasIdentity = identity && identity !== 'Unknown';
+
+  if (!hasIdentity) return [];
+
+  const identityLower = identity.toLowerCase();
+  const specialties = ctx.primarySpecialties ?? [];
+  const focus: string[] = [];
+
+  // Always suggest segments that vary by scale and region
+  focus.push(`emerging boutique ${identityLower} firms not yet in database`);
+
+  if (specialties[0]) {
+    focus.push(`specialist ${specialties[0].toLowerCase()} agencies`);
+  }
+  if (specialties[1]) {
+    focus.push(`${specialties[1].toLowerCase()} focused consultancies`);
+  }
+
+  // Add enterprise / regional variants if fewer than 10 total found so far
+  if (compressed.totalExcluded < 10) {
+    focus.push(`enterprise ${identityLower} platforms`);
+    focus.push(`regional / niche market ${identityLower} agencies`);
+  } else {
+    focus.push(`enterprise-scale ${identityLower} firms`);
+  }
+
+  return focus.slice(0, 5);
+}
+
+// ── Context block ─────────────────────────────────────────────────────────────
+
 function buildContextBlock(ctx: BusinessContext): string {
   const hasPrimaryIdentity =
     ctx.primaryCompetitiveIdentity && ctx.primaryCompetitiveIdentity !== 'Unknown';
@@ -76,7 +192,6 @@ function buildContextBlock(ctx: BusinessContext): string {
   const hasCompetitiveSurfaces = ctx.competitiveSurfaces && ctx.competitiveSurfaces.length > 0;
 
   if (hasPrimaryIdentity || hasPrimarySpecialties) {
-    // Rich competitive context path — use intent-driven fields
     const lines: string[] = [
       `CONFIRMED COMPETITIVE IDENTITY (extracted from the website — this defines who they compete with):`,
       `- Primary competitive identity: ${ctx.primaryCompetitiveIdentity}`,
@@ -90,7 +205,7 @@ function buildContextBlock(ctx: BusinessContext): string {
     }
     if (ctx.secondaryCapabilities && ctx.secondaryCapabilities.length > 0) {
       lines.push(
-        `- Secondary capabilities (DO NOT use these to find competitors — they are supporting services, not the primary identity): ${ctx.secondaryCapabilities.join(', ')}`,
+        `- Secondary capabilities (DO NOT use to find competitors — supporting services, not primary identity): ${ctx.secondaryCapabilities.join(', ')}`,
       );
     }
 
@@ -106,7 +221,7 @@ function buildContextBlock(ctx: BusinessContext): string {
     return lines.join('\n');
   }
 
-  // Fallback path — old-style context without competitive identity fields
+  // Fallback for contexts without competitive identity fields
   return `CONFIRMED BUSINESS CONTEXT (extracted directly from the website — trust this over any guesses):
 - Company type: ${ctx.companyType}
 - Industry: ${ctx.industry}

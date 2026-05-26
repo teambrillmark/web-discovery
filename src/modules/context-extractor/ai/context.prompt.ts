@@ -35,6 +35,10 @@ You must determine:
 
 1. PRIMARY COMPETITIVE IDENTITY — one concise phrase describing what this company IS in the market
    (e.g., "Experimentation / A/B Testing Agency", "B2B SaaS Analytics Platform", "eCommerce CRO Agency")
+   CRITICAL: Do NOT anchor the identity to a platform (Shopify, Magento, WordPress, etc.) unless that
+   platform IS the entire business model. A company that runs A/B tests for Shopify stores competes
+   primarily as an "Experimentation Agency", NOT a "Shopify Agency" — Shopify is their client's platform,
+   not the competitive identity. Identify WHAT the company does, not WHOSE platform they work on.
 
 2. PRIMARY SPECIALTIES — 2-4 things they most directly compete on (what buyers choose them for)
    NOT every service on the site — only the core competitive differentiators
@@ -51,15 +55,19 @@ You must determine:
    companies like this one. These must be:
    - Specific to the PRIMARY COMPETITIVE IDENTITY (not generic industry terms)
    - Phrased as a buyer would search, not as a category label
-   - Varied in angle (by specialty, by audience, by use case, by platform if relevant)
+   - Varied in angle (by specialty, by audience, by use case)
    - Useful for finding LISTICLE pages like "Top 10 X companies 2025"
+   - Platform-specific queries (e.g. "Shopify CRO agency") should ONLY appear if the platform is
+     explicitly stated as the PRIMARY differentiator in the extracted content. Prefer broader queries.
 
    GOOD examples for an A/B Testing agency:
      "top experimentation agencies", "best A/B testing agencies for ecommerce",
-     "CRO test development companies", "Shopify experimentation agency"
+     "CRO testing consultancies", "conversion rate optimization agencies",
+     "experimentation strategy firms"
 
-   BAD examples (too generic, wrong focus):
-     "best Marketing agencies", "top development companies", "web agency list"
+   BAD examples (too generic or wrong focus):
+     "best Marketing agencies", "top development companies", "web agency list",
+     "Shopify CRO agency" (unless the content shows Shopify IS the primary identity)
 
 7. CATEGORY — a short market category label (e.g., "Agency", "Platform", "Tool", "Consultancy")
 
@@ -87,6 +95,8 @@ Rules:
 - primaryCompetitiveIdentity and primarySpecialties must reflect the MARKET IDENTITY, not a list of features.
 - secondaryCapabilities are real services the company offers but that do NOT define who they compete with.
 - competitorSearchQueries must be queries that would surface LISTICLE pages listing this type of company.
+- competitorSearchQueries should focus on methodology and market segment, NOT on platforms (Shopify, WooCommerce)
+  unless the platform is explicitly the primary differentiator in the extracted content.
 - Never fabricate services, audiences, or industries not supported by the content.
 - confidence reflects content evidence quality, not JSON completeness.
 - If content is sparse, set confidence to "low" and populate what you can.`;

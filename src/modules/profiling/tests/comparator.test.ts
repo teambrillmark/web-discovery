@@ -115,13 +115,15 @@ describe('industryMatch', () => {
 
 describe('sharedTokens', () => {
   it('returns tokens that appear in both arrays (using normalized canonical tokens)', () => {
-    // 'A/B Testing' → 'abtesting', 'CRO' → 'abtesting' (cross-cluster: cro→abtesting)
-    // 'CRO consulting' → 'cro' → 'abtesting'
-    // Both sides share the canonical 'abtesting' token
+    // 'A/B Testing' → 'abtesting'; 'CRO' → 'cro' (distinct clusters; cross-cluster
+    // similarity lives in the ontology layer, not here)
+    // 'CRO consulting' → 'cro'
+    // Both sides share the canonical 'cro' token; 'abtesting' is only on side A
     const a = ['A/B Testing', 'CRO'];
     const b = ['CRO consulting', 'SEO'];
     const shared = sharedTokens(a, b);
-    expect(shared).toContain('abtesting');
+    expect(shared).toContain('cro');
+    expect(shared).not.toContain('abtesting');
   });
 
   it('returns empty array for no overlap', () => {

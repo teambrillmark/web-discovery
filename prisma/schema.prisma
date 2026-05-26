@@ -96,6 +96,10 @@ model CompetitorProfile {
   scoreConfidence            String   @default("low")
   matchedSignals             Json     @default("{}")
   scoringReasoning           Json     @default("[]")
+  // Authoritative normalized taxonomy — persisted so downstream layers
+  // (API, UI, analytics) all consume the same classification without recomputing.
+  businessModel              String?
+  businessModelConfidence    Json     @default("{}")
   createdAt                  DateTime @default(now())
 
   @@unique([domain, queryId])

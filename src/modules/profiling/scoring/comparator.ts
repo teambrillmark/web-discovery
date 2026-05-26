@@ -7,8 +7,8 @@
 //     (specialties, services, audience are short, structured lists)
 //
 // WHY semantic normalization instead of embeddings?
-//   Without it: "Experimentation" and "A/B Testing" share zero tokens — Jaccard 0.
-//   With it: both → 'abtesting' canonical token — Jaccard 1.
+//   Without it: "Conversion Rate Optimization" and "CRO" share zero tokens — Jaccard 0.
+//   With it: both → 'cro' canonical token — Jaccard 1.
 //   The B2B SaaS/agency domain has a small, stable synonym vocabulary.
 //   A hand-curated normalization map beats embeddings for this narrow domain:
 //   deterministic, zero latency, no API cost, fully auditable.
@@ -45,9 +45,21 @@ const STOPWORDS = new Set([
 // matched by "conversion optimization" first, leaving "rate" as a stray token.
 // Canonical tokens use compact single/hyphen-free strings so tokenize() keeps them whole.
 //
-// How to read this: LEFT side = raw phrase user/AI might write; RIGHT = canonical token.
-// When jaccardSimilarity sees "Experimentation" and "A/B Testing" in two separate
-// specialty arrays, both normalize to 'abtesting', and the Jaccard goes from ~0 to 1.
+// SCOPE: intra-cluster normalization only.
+//   • All phrasings of "A/B Testing" collapse to 'abtesting'.
+//   • All phrasings of "CRO" collapse to 'cro'.
+//   • All phrasings of "Experimentation" collapse to 'experimentation'.
+//   These are DISTINCT canonical tokens. Inter-cluster similarity is handled by the
+//   ontology layer (CRO ↔ EXPERIMENTATION = 0.75 via groupSimilarity), not here.
+//
+// WHY Experimentation ≠ A/B Testing here?
+//   Experimentation is a broader strategic discipline; A/B Testing is a specific
+//   methodology within it. Collapsing 'experimentation' → 'abtesting' gave
+//   tokenOverlap("Experimentation Agency", "A/B Testing Agency") = 1.0, erasing
+//   the meaningful distinction between a methodology-focused shop and a broader
+//   experimentation practice. The hierarchy is preserved at the comparator level;
+//   the ontology already places them in the same group (EXPERIMENTATION) for
+//   semantic group matching.
 
 const PHRASE_NORMALIZATIONS: [phrase: string, token: string][] = [
   // ── CRO cluster — all mean "improving conversion rates" ───────────────────
@@ -58,12 +70,13 @@ const PHRASE_NORMALIZATIONS: [phrase: string, token: string][] = [
   ['landing page optimisation', 'cro'],
   ['conversion optimization', 'cro'],
   ['conversion optimisation', 'cro'],
-  ['cro strategy', 'cro'],       // "CRO strategy" → just "cro" (strip descriptive modifier)
+  ['cro strategy', 'cro'],
   ['cro consulting', 'cro'],
   ['cro support', 'cro'],
   ['cro management', 'cro'],
 
-  // ── A/B testing cluster — all mean "running controlled experiments" ───────
+  // ── A/B testing cluster — execution methodology for controlled tests ───────
+  // Covers all phrasings of "running an A/B test" as a discrete task.
   ['a/b test development', 'abtesting'],
   ['ab test development', 'abtesting'],
   ['a/b testing', 'abtesting'],
@@ -71,27 +84,15 @@ const PHRASE_NORMALIZATIONS: [phrase: string, token: string][] = [
   ['split testing', 'abtesting'],
   ['multivariate testing', 'abtesting'],
   ['multivariate optimisation', 'cro'],
-  ['experimentation programs', 'abtesting'],  // "experimentation programs" → "abtesting"
-  ['experimentation platform', 'abtesting'],
-  ['experimentation strategy', 'abtesting'],
-  ['ai-powered testing', 'abtesting'],        // "AI-Powered Testing" (operational) → canonical
+  ['ai-powered testing', 'abtesting'],
   ['ai powered testing', 'abtesting'],
 
-  // ── Single-word synonyms ─────────────────────────────────────────────────
-  ['experimentation', 'abtesting'],
-  ['experiments', 'abtesting'],
-
-  // ── CRO ↔ A/B Testing cross-cluster ─────────────────────────────────────
-  // WHY? "CRO" and "A/B Testing" compete for the same budget and are direct substitutes
-  // in the competitive landscape. A "CRO Agency" IS a competitor to an A/B Testing Agency.
-  // Mapping 'cro' → 'abtesting' means:
-  //   "CRO Agency" → "abtesting Agency" → {abtesting, agency}
-  //   "A/B Testing Agency" → "abtesting Agency" → {abtesting, agency}
-  //   tokenOverlap = 1.0 — correct, they ARE the same competitive cluster.
-  // WHY single-word and not multi-word phrase?
-  //   'cro' → 'abtesting' works transitively in the single-pass loop:
-  //   "cro strategy" first maps "cro strategy" → "cro", then "cro" → "abtesting" in the same pass.
-  ['cro', 'abtesting'],
+  // ── Experimentation cluster — broader strategic discipline ────────────────
+  // Experimentation (strategic practice) is DISTINCT from A/B Testing (execution method).
+  // 'experimentation platform' → strip 'platform' modifier (it's delivery, not concept).
+  // 'experiments' → singular canonical (STOPWORDS handles 'programs'/'strategy' modifiers).
+  ['experimentation platform', 'experimentation'],
+  ['experiments', 'experimentation'],
 
   // ── Spelling normalizations ───────────────────────────────────────────────
   ['e-commerce', 'ecommerce'],
